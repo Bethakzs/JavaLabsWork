@@ -11,10 +11,6 @@ public class CharCount {
         this.count = 1;
     }
 
-    public static void initializeArray(final int length) {
-        allCharacters = new CharCount[length];
-    }
-
     public static void addCharacter(final char character) {
         for (int i = 0; i < counter; i++) {
             if (allCharacters[i].character == character) {
@@ -34,8 +30,8 @@ public class CharCount {
         System.out.println();
     }
 
-    public static void reset() {
-        allCharacters = new CharCount[100]; // Assigning a fixed size instead of an empty array
+    public static void reset(final int length) {
+        allCharacters = new CharCount[length];
         counter = 0;
     }
 }

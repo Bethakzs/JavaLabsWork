@@ -12,8 +12,7 @@ public class WorkClass {
     }
 
     public static void countEveryCharIncluded(final String row) {
-        CharCount.reset();
-        CharCount.initializeArray(row.length());
+        CharCount.reset(row.length());
         final char[] chars = row.toCharArray();
         for (final char c : chars) {
             if (Character.isWhitespace(c)) {
