@@ -1,37 +1,33 @@
 package org.example.lab_1.task4;
 
 public class CharCount {
-    private final char character;
-    private int count;
-    private static CharCount[] allCharacters;
-    private static int counter = 0;
+    private final char[] characters;
+    private final int[] counts;
+    private int uniqueCharCount;
 
-    private CharCount(final char character) {
-        this.character = character;
-        this.count = 1;
+    public CharCount(int length) {
+        characters = new char[length];
+        counts = new int[length];
+        uniqueCharCount = 0;
     }
 
-    public static void addCharacter(final char character) {
-        for (int i = 0; i < counter; i++) {
-            if (allCharacters[i].character == character) {
-                allCharacters[i].count++;
+    public void addCharacter(final char character) {
+        for (int i = 0; i < uniqueCharCount; i++) {
+            if (characters[i] == character) {
+                counts[i]++;
                 return;
             }
         }
-        if (counter < allCharacters.length) {
-            allCharacters[counter++] = new CharCount(character);
-        }
+
+        characters[uniqueCharCount] = character;
+        counts[uniqueCharCount] = 1;
+        uniqueCharCount++;
     }
 
-    public static void printAllCharacters() {
-        for (int i = 0; i < counter; i++) {
-            System.out.print(allCharacters[i].character + " = " + allCharacters[i].count + "; ");
+    public void printAllCharacters() {
+        for (int i = 0; i < uniqueCharCount; i++) {
+            System.out.print(characters[i] + " = " + counts[i] + "; ");
         }
         System.out.println();
-    }
-
-    public static void reset(final int length) {
-        allCharacters = new CharCount[length];
-        counter = 0;
     }
 }
