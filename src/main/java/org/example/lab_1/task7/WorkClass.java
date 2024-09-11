@@ -7,37 +7,47 @@ public class WorkClass {
             final Bank bank1 = new Bank("Monobank");
             final Bank bank2 = new Bank("Privatbank");
 
+            final User user1 = new User("Ivan");
+            final User user2 = new User("Petro");
+
             final BankAccount account1 = new BankAccount("111111", bank1, "USD", 1000);
             final BankAccount account2 = new BankAccount("222222", bank1, "USD", 500);
             final BankAccount account3 = new BankAccount("333333", bank2, "EUR", 2000);
             final BankAccount account4 = new BankAccount("444444", bank2, "EUR", 1500);
 
+            user1.addAccount(account1);
+            user1.addAccount(account2);
+            user2.addAccount(account3);
+            user2.addAccount(account4);
+
             final BankTransaction transactionProcessor = new BankTransaction();
 
-            //given
-            printAccountBalance(account1, account2, account3, account4);
+            // Given
+            printUserAccountsBalance(user1);
+            printUserAccountsBalance(user2);
 
-            //when
-            performTransfer(account1, account2, 100, transactionProcessor); // In the same bank, the same user
-            performTransfer(account1, account3, 200, transactionProcessor); // In different banks, the same user
-            performTransfer(account1, account4, 50, transactionProcessor);  // In the same bank, different users
-            performTransfer(account3, account4, 300, transactionProcessor); // In different banks, different users
+            // When
+            performTransfer(account1, account2, 100, transactionProcessor); // Same bank, same user
+            performTransfer(account1, account3, 200, transactionProcessor); // Different bank, same user
+            performTransfer(account1, account4, 50, transactionProcessor);  // Different bank, different users
+            performTransfer(account3, account4, 300, transactionProcessor); // Same bank, different users
 
-            //then
-            printAccountBalance(account1, account2, account3, account4);
+            // Then
+            printUserAccountsBalance(user1);
+            printUserAccountsBalance(user2);
 
         } catch (IllegalArgumentException e) {
-            System.out.println("Error : " + e.getMessage());
+            System.err.println("Error : " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Unknown error : " + e.getMessage());
+            System.err.println("Unknown error : " + e.getMessage());
         }
     }
 
-    private static void printAccountBalance(BankAccount account1, BankAccount account2, BankAccount account3, BankAccount account4) {
-        System.out.println("Balance Account1 : " + account1.getBalance() + " " + account1.getCurrency());
-        System.out.println("Balance Account2 : " + account2.getBalance() + " " + account2.getCurrency());
-        System.out.println("Balance Account3 : " + account3.getBalance() + " " + account3.getCurrency());
-        System.out.println("Balance Account4 : " + account4.getBalance() + " " + account4.getCurrency());
+    private static void printUserAccountsBalance(User user) {
+        System.out.println("User: " + user.getName());
+        for (BankAccount account : user.getAccounts()) {
+            System.out.println("Balance Account " + account.getAccountNumber() + " : " + account.getBalance() + " " + account.getCurrency());
+        }
     }
 
     private static void performTransfer(BankAccount fromAccount, BankAccount toAccount, double amount, BankTransaction transactionProcessor) {
