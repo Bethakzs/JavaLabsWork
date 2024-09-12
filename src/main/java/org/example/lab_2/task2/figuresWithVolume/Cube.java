@@ -7,6 +7,9 @@ public class Cube extends ShapeWithVolume {
     private final double side;
 
     public Cube(double side) {
+        if (side <= 0) {
+            throw new IllegalArgumentException("Side of a cube must be greater than 0");
+        }
         this.side = side;
     }
 

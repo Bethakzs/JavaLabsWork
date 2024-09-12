@@ -22,12 +22,15 @@ public class WorkClass {
 
         System.out.println("--------------------------------");
 
-        ShapeWithVolume cube = new Cube(5);
-        ShapeWithVolume sphere = new Sphere(3);
-        ShapeWithVolume pyramid = new Pyramid(5, 5, 5);
+        ShapeWithVolume cube = new Cube(7);
+        ShapeWithVolume sphere = new Sphere(4);
+        ShapeWithVolume pyramid = new Pyramid(5, 4, 5);
 
+        System.out.println(cube.getArea() + " - the area of the cube");
         System.out.println(cube.getVolume() + " - the volume of the cube");
+        System.out.println(sphere.getArea() + " - the area of the sphere");
         System.out.println(sphere.getVolume() + " - the volume of the sphere");
+        System.out.println(pyramid.getArea() + " - the area of the pyramid");
         System.out.println(pyramid.getVolume() + " - the volume of the pyramid");
     }
 }

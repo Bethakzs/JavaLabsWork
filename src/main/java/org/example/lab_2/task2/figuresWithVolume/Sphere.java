@@ -7,6 +7,9 @@ public class Sphere extends ShapeWithVolume {
     private final double radius;
 
     public Sphere(double radius) {
+        if (radius <= 0) {
+            throw new IllegalArgumentException("Radius of a sphere must be greater than 0");
+        }
         this.radius = radius;
     }
 
@@ -16,7 +19,7 @@ public class Sphere extends ShapeWithVolume {
     }
 
     @Override
-    public double getArea() { // area of a sphere
+    public double getArea() { // full area of a sphere
         return Math.round(4 * Math.PI * Math.pow(radius, 2) * 10.0) / 10.0;
     }
 }
