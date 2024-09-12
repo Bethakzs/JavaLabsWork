@@ -14,4 +14,9 @@ public class Cube extends ShapeWithVolume {
     public double getVolume() {
         return Math.pow(side, 3);
     }
+
+    @Override
+    public double getArea() { // full area of a cube
+        return 6 * Math.pow(side, 2);
+    }
 }

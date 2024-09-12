@@ -14,4 +14,9 @@ public class Sphere extends ShapeWithVolume {
     public double getVolume() {
         return Math.round(4.0 / 3.0 * Math.PI * Math.pow(radius, 3) * 10.0) / 10.0;
     }
+
+    @Override
+    public double getArea() { // area of a sphere
+        return Math.round(4 * Math.PI * Math.pow(radius, 2) * 10.0) / 10.0;
+    }
 }

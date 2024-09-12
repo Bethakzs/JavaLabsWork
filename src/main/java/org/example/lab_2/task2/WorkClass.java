@@ -13,20 +13,18 @@ public class WorkClass {
         ShapeWithArea square = new Square(5);
         ShapeWithArea rectangle = new Rectangle(3, 4);
         ShapeWithArea circle = new Circle(3);
-        ShapeWithArea triangle1 = new Triangle(3, 4, 5);
-        ShapeWithArea triangle2 = new Triangle(3, 4, 5);
+        ShapeWithArea triangle = new Triangle(6, 4);
 
         System.out.println(square.getArea() + " - the area of the square");
         System.out.println(rectangle.getArea() + " - the area of the rectangle");
         System.out.println(circle.getArea() + " - the area of the circle");
-        System.out.println(triangle1.getArea() + " - the area of the triangle with 3 sides");
-        System.out.println(triangle2.getArea() + " - the area of the triangle with ");
+        System.out.println(triangle.getArea() + " - the area of the triangle");
 
         System.out.println("--------------------------------");
 
         ShapeWithVolume cube = new Cube(5);
         ShapeWithVolume sphere = new Sphere(3);
-        ShapeWithVolume pyramid = new Pyramid(triangle1.getArea(), 5);
+        ShapeWithVolume pyramid = new Pyramid(5, 5, 5);
 
         System.out.println(cube.getVolume() + " - the volume of the cube");
         System.out.println(sphere.getVolume() + " - the volume of the sphere");
