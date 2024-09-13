@@ -6,7 +6,7 @@ public class Sphere extends ShapeWithVolume {
 
     private final double radius;
 
-    public Sphere(double radius) {
+    public Sphere(final double radius) {
         if (radius <= 0) {
             throw new IllegalArgumentException("Radius of a sphere must be greater than 0");
         }

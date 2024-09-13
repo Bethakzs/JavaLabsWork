@@ -1,13 +1,13 @@
 package org.example.lab_2.task2.figuresWithArea;
 
-import org.example.lab_2.task2.ShapeWithArea;
+import org.example.lab_2.task2.Shape;
 
-public class Triangle extends ShapeWithArea {
+public class Triangle extends Shape {
 
     private final double bottom;
     private final double height;
 
-    public Triangle(double base, double height) {
+    public Triangle(final double base, final double height) {
         if (base <= 0 || height <= 0) {
             throw new IllegalArgumentException("Base and height must be greater than 0");
         }

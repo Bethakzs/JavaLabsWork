@@ -1,12 +1,12 @@
 package org.example.lab_2.task2.figuresWithArea;
 
-import org.example.lab_2.task2.ShapeWithArea;
+import org.example.lab_2.task2.Shape;
 
-public class Circle extends ShapeWithArea {
+public class Circle extends Shape {
 
     private final double radius;
 
-    public Circle(double radius) {
+    public Circle(final double radius) {
         if(radius <= 0) {
             throw new IllegalArgumentException("Radius must be greater than 0");
         }
