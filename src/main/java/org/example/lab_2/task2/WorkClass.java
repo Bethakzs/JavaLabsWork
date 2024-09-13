@@ -16,9 +16,9 @@ public class WorkClass {
             final int choice = scanner.nextInt();
 
             if (choice == 1) {
-                displayTestData();
+                uploadTestData();
             } else if (choice == 2) {
-                displayUserData(scanner);
+                uploadUserData(scanner);
             } else {
                 System.err.println("Invalid choice");
             }
@@ -27,7 +27,7 @@ public class WorkClass {
         }
     }
 
-    private static void displayUserData(final Scanner scanner) {
+    private static void uploadUserData(final Scanner scanner) {
         System.out.println("Enter the side length of the square:");
         final double squareSide = scanner.nextDouble();
         final Shape square = new Square(squareSide);
@@ -65,7 +65,7 @@ public class WorkClass {
         displayShapeData(square, rectangle, circle, triangle, cube, sphere, pyramid);
     }
 
-    private static void displayTestData() {
+    private static void uploadTestData() {
         final Shape square = new Square(5);
         final Shape rectangle = new Rectangle(3, 4);
         final Shape circle = new Circle(3);

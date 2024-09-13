@@ -9,9 +9,9 @@ public class WorkClass {
             final int choice = scanner.nextInt();
 
             if (choice == 1) {
-                displayTestGraphs();
+                uploadTestGraphs();
             } else if (choice == 2) {
-                displayUserGraphs(scanner);
+                uploadUserGraphs(scanner);
             } else {
                 System.err.println("Invalid choice");
             }
@@ -20,7 +20,7 @@ public class WorkClass {
         }
     }
 
-    private static void displayTestGraphs() {
+    private static void uploadTestGraphs() {
         final Graph directedGraph = new Graph(true);
         final Graph undirectedGraph = new Graph(false);
 
@@ -54,7 +54,7 @@ public class WorkClass {
         undirectedGraph.printGraph();
     }
 
-    private static void displayUserGraphs(final Scanner scanner) {
+    private static void uploadUserGraphs(final Scanner scanner) {
         System.out.println("Enter the type of graph: 1 - Directed, 2 - Undirected");
         final int graphType = scanner.nextInt();
         final boolean isDirected = graphType == 1;
@@ -62,13 +62,13 @@ public class WorkClass {
         final Graph graph = new Graph(isDirected);
 
         System.out.println("Enter the number of the top of graph:");
-        final int vertexCount = scanner.nextInt();
-        if (vertexCount <= 0) {
-            throw new IllegalArgumentException("The number of vertices must be greater than 0");
+        final int togCount = scanner.nextInt();
+        if (togCount <= 0) {
+            throw new IllegalArgumentException("The number of the top of graph must be greater than 0");
         }
 
-        for (int i = 0; i < vertexCount; i++) {
-            System.out.println("Enter the name and value for vertex " + (i + 1) + " (format: Name Value):");
+        for (int i = 0; i < togCount; i++) {
+            System.out.println("Enter the name and value for top of graph " + (i + 1) + " (format: Name Value):");
             final String name = scanner.next();
             final int value = scanner.nextInt();
             final TopOfGraph vertex = new TopOfGraph(name, value);
@@ -83,25 +83,25 @@ public class WorkClass {
         }
 
         for (int i = 0; i < arcCount; i++) {
-            System.out.println("Enter the start and end vertices for arc " + (i + 1) + " (format: StartVertex EndVertex):");
-            final String startVertexName = scanner.next();
-            final String endVertexName = scanner.next();
+            System.out.println("Enter the start and end top of graph for arc " + (i + 1) + " (format: StartTOG EndTOG):");
+            final String startTOGName = scanner.next();
+            final String endTOGName = scanner.next();
 
-            final TopOfGraph startVertex = findVertex(graph, startVertexName);
-            final TopOfGraph endVertex = findVertex(graph, endVertexName);
+            final TopOfGraph startTOG = findTOG(graph, startTOGName);
+            final TopOfGraph endTOG = findTOG(graph, endTOGName);
 
-            if (startVertex == null || endVertex == null) {
-                throw new IllegalArgumentException("One or both vertices not found");
+            if (startTOG == null || endTOG == null) {
+                throw new IllegalArgumentException("One or both TOG not found");
             }
 
-            graph.addArc(startVertex, endVertex);
+            graph.addArc(startTOG, endTOG);
         }
 
         System.out.println((isDirected ? "Directed" : "Undirected") + " Graph:");
         graph.printGraph();
     }
 
-    private static TopOfGraph findVertex(final Graph graph, final String name) {
+    private static TopOfGraph findTOG(final Graph graph, final String name) {
         for (TopOfGraph tog : graph.getTopsOfGraph()) {
             if (tog.getName().equals(name)) {
                 return tog;
