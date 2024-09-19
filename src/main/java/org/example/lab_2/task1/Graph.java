@@ -1,9 +1,6 @@
 package org.example.lab_2.task1;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Graph {
     private final Map<TopOfGraph, Set<TopOfGraph>> adjacencyList = new HashMap<>();
@@ -41,5 +38,15 @@ public class Graph {
             }
             System.out.println();
         }
+    }
+
+    public List<TopOfGraph> findTheShortestPath (TopOfGraph start, TopOfGraph finish) {
+        if(!adjacencyList.containsKey(start) || !adjacencyList.containsKey(finish)) {
+            throw new IllegalArgumentException("Start or finish top is not in the graph");
+        }
+
+        Map<TopOfGraph, Boolean> visited = new HashMap<>();
+
+        return new ArrayList<>();
     }
 }
