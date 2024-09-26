@@ -6,11 +6,9 @@ import java.util.List;
 
 public class Room extends Apartment {
     private final int number;
-    private final Type type;
 
     public Room(String name, Type type, int maxSpace, int number,  double price, List<Amenity> amenities) {
-        super(name, maxSpace, price, amenities);
-        this.type = type;
+        super(name, maxSpace, price, type, amenities);
         this.number = number;
     }
 
@@ -30,12 +28,8 @@ public class Room extends Apartment {
         System.out.println();
     }
 
-    // Getters
+    // Getter
     public int getNumber() {
         return number;
-    }
-
-    public Type getType() {
-        return type;
     }
 }

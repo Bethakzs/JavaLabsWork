@@ -6,11 +6,8 @@ import java.util.List;
 
 public class House extends Apartment {
 
-    private final Type type;
-
     public House(String name, Type type, int maxSpace, double price, List<Amenity> amenities) {
-        super(name, maxSpace, price, amenities);
-        this.type = type;
+        super(name, maxSpace, price, type, amenities);
     }
 
     @Override
@@ -26,10 +23,5 @@ public class House extends Apartment {
                 .map(Amenity::getAmenityType)
                 .forEach(System.out::println);
         System.out.println();
-    }
-
-    // Getter
-    public Type getType() {
-        return this.type;
     }
 }

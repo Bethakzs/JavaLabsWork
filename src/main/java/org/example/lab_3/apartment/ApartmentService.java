@@ -21,7 +21,8 @@ public class ApartmentService {
     public List<Apartment> searchApartment(AmenityType amenityType, Type type) {
         return apartments.stream()
                 .filter(apartment ->
-                        (amenityType == null || hasAmenity(apartment, amenityType))
+                        (amenityType == null || hasAmenity(apartment, amenityType)) &&
+                                (type == null || hasType(apartment, type))
                 )
                 .collect(Collectors.toList());
     }
@@ -31,10 +32,9 @@ public class ApartmentService {
                 .anyMatch(amenity -> amenity.getAmenityType().equals(amenityType));
     }
 
-//    private boolean HasType(Apartment apartment, Type type) {
-//        return apartment.getAmenities().stream()
-//                .anyMatch(amenity -> amenity.getType() != null && amenity.getType().equals(type));
-//    }
+    private boolean hasType(Apartment apartment, Type type) {
+        return apartment.getType().equals(type);
+    }
 
     public void printStatistics(Apartment house1) {
         double totalIncome = calculateTotalIncome(house1);

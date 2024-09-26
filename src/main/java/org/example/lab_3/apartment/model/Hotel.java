@@ -9,8 +9,8 @@ import java.util.Set;
 public class Hotel extends Apartment {
     private final List<Room> rooms;
 
-    public Hotel(String name, double price, List<Amenity> amenities, List<Room> rooms) {
-        super(name, 0, price, amenities);
+    public Hotel(String name, double price, Type type, List<Amenity> amenities, List<Room> rooms) {
+        super(name, 0, price, type, amenities);
         this.rooms = rooms;
     }
 
