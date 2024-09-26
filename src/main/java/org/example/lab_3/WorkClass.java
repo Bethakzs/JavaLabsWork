@@ -59,8 +59,6 @@ public class WorkClass {
         foundApartments.forEach(apartment -> System.out.println(apartment.getName()));
     }
 
-    private
-
     static class TestResources {
         private final static Amenity amenity1 = new Amenity(AmenityType.WI_FI);
         private final static Amenity amenity2 = new Amenity(AmenityType.KITCHEN);
