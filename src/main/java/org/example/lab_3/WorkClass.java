@@ -55,7 +55,9 @@ public class WorkClass {
 
         apartmentService.printStatistics(TestResources.house1); // 2000 * 0,8 = 1600 * 6 = 9600 + 4000 = 13600
 
-        apartmentService.searchApartment(AmenityType.WI_FI, Type.STANDARD).forEach(Apartment::printInfo);
+        List<Apartment> foundApartments = apartmentService.searchApartment(AmenityType.WI_FI, Type.LUXURY);
+        foundApartments.forEach(apartment -> System.out.println(apartment.getName()));
+
     }
 
     private
@@ -89,7 +91,7 @@ public class WorkClass {
         private final static Room room3 = new Room("Room 3", Type.APARTMENT, 3, 103, 1500,
                 new ArrayList<>());
 
-        private final static Hotel hotel1 = new Hotel("Hotel 1", 5000,
+        private final static Hotel hotel1 = new Hotel("Hotel 1", 5000, Type.LUXURY,
                 new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity11)),
                 new ArrayList<>(List.of(room1, room2, room3)));
 

@@ -11,12 +11,14 @@ public abstract class Apartment {
     private int animalMaxSpace = 0;
     private final List<Amenity> amenities;
     private final double price;
+    private final Type type;
 
-    public Apartment(String name, int maxSpace, double price, List<Amenity> amenities) {
+    public Apartment(String name, int maxSpace, double price, Type type, List<Amenity> amenities) {
         this.name = name;
         this.maxSpace = maxSpace;
         this.amenities = amenities;
         this.price = price;
+        this.type = type;
 
         amenities.forEach(amenity -> {
             if (amenity.getCategory() != null) {
@@ -51,6 +53,10 @@ public abstract class Apartment {
 
     public double getPrice() {
         return price;
+    }
+
+    public Type getType() {
+        return type;
     }
 
     public List<Amenity> getAmenities() {
