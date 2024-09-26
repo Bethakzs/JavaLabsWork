@@ -57,7 +57,6 @@ public class WorkClass {
 
         List<Apartment> foundApartments = apartmentService.searchApartment(AmenityType.WI_FI, Type.LUXURY);
         foundApartments.forEach(apartment -> System.out.println(apartment.getName()));
-
     }
 
     private
