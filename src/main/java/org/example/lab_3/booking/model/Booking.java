@@ -6,6 +6,10 @@ import org.example.lab_3.consumer.model.Consumer;
 import java.time.LocalDate;
 
 public class Booking {
+    private static final int MARCH = 3; // Березень
+    private static final int NOVEMBER = 11;
+    private static final double DISCOUNT = 0.8;
+
     private final Consumer consumer;
     private final Apartment apartment;
     private final LocalDate startDate;
@@ -29,8 +33,8 @@ public class Booking {
         while (!currentDay.isAfter(endDate)) {
             double dayCost = pricePerDay;
 
-            if (currentDay.getMonthValue() == 3 || currentDay.getMonthValue() == 11) {
-                dayCost *= 0.8; // Discount 20%
+            if (currentDay.getMonthValue() == MARCH || currentDay.getMonthValue() == NOVEMBER) {
+                dayCost *= DISCOUNT;
             }
 
             totalCost += dayCost;
@@ -40,6 +44,7 @@ public class Booking {
         return totalCost;
     }
 
+    // Getters
     public Apartment getApartment() {
         return apartment;
     }

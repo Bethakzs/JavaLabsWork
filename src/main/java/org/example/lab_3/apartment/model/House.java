@@ -4,8 +4,7 @@ import org.example.lab_3.amenity.model.Amenity;
 
 import java.util.List;
 
-public class House extends Apartment {
-
+public class House extends ApartmentCapacity {
     public House(String name, Type type, int maxSpace, double price, List<Amenity> amenities) {
         super(name, maxSpace, price, type, amenities);
     }

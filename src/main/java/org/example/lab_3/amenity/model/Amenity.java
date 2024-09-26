@@ -17,6 +17,7 @@ public class Amenity {
         this.category = category;
     }
 
+    // Getters
     public AmenityType getAmenityType() {
         return amenityType;
     }

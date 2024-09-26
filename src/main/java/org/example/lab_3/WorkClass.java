@@ -20,8 +20,6 @@ public class WorkClass {
         // Amenity
         TestResources.house3.printInfo();
         System.out.println("--------------------------------------------------");
-        TestResources.room2.printInfo();
-        System.out.println("--------------------------------------------------");
         TestResources.hotel1.printInfo();
         System.out.println("--------------------------------------------------");
         TestResources.hotel1.printRoomInfo(TestResources.room1);
@@ -81,11 +79,11 @@ public class WorkClass {
         private final static Apartment house4 = new House("House 4", Type.LUXURY, 3, 7000,
                 new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity4, amenity5, amenity6, amenity7, amenity11)));
 
-        private final static Room room1 = new Room("Room 1", Type.APARTMENT, 3, 101, 800,
+        private final static Room room1 = new Room("Room 1", Type.APARTMENT, 3, 800,
                 new ArrayList<>(List.of(amenity1, amenity2, amenity10)));
-        private final static Room room2 = new Room("Room 2", Type.APARTMENT, 4, 102, 1000,
+        private final static Room room2 = new Room("Room 2", Type.APARTMENT, 4, 1000,
                 new ArrayList<>(List.of(amenity1, amenity4, amenity9)));
-        private final static Room room3 = new Room("Room 3", Type.APARTMENT, 3, 103, 1500,
+        private final static Room room3 = new Room("Room 3", Type.APARTMENT, 3, 1500,
                 new ArrayList<>());
 
         private final static Hotel hotel1 = new Hotel("Hotel 1", 5000, Type.LUXURY,
