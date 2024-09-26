@@ -9,6 +9,7 @@ public class Task5 {
             {"Hearts of iron", "Civilization", "Europa sub string "}
     };
 
+
     public static void main(final String[] args) {
         System.out.println("Number of occurrences: " + countSubstring());
     }

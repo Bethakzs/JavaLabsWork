@@ -1,6 +1,6 @@
-package org.example.lab_3.apartment;
+package org.example.lab_3.apartment.model;
 
-import org.example.lab_3.amenity.Amenity;
+import org.example.lab_3.amenity.model.Amenity;
 
 import java.util.List;
 
@@ -10,12 +10,15 @@ public abstract class Apartment {
     private int childrenMaxSpace = 0;
     private int animalMaxSpace = 0;
     private final List<Amenity> amenities;
+    private final double price;
 
-    public Apartment(String name, int maxSpace, List<Amenity> amenities) {
+    public Apartment(String name, int maxSpace, double price, List<Amenity> amenities) {
         this.name = name;
         this.maxSpace = maxSpace;
         this.amenities = amenities;
-        for (Amenity amenity : amenities) {
+        this.price = price;
+
+        amenities.forEach(amenity -> {
             if (amenity.getCategory() != null) {
                 switch (amenity.getCategory()) {
                     case ADULT -> this.maxSpace += amenity.getAdditionalSpace();
@@ -24,7 +27,7 @@ public abstract class Apartment {
                     default -> throw new IllegalArgumentException("Incorrect category");
                 }
             }
-        }
+        });
     }
 
     public abstract void printInfo();
@@ -44,6 +47,10 @@ public abstract class Apartment {
 
     public int getAnimalMaxSpace() {
         return animalMaxSpace;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public List<Amenity> getAmenities() {

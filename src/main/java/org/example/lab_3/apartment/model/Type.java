@@ -1,4 +1,4 @@
-package org.example.lab_3.apartment;
+package org.example.lab_3.apartment.model;
 
 public enum Type {
     ECONOMIC,

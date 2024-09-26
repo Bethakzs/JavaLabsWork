@@ -1,6 +1,6 @@
-package org.example.lab_3.apartment;
+package org.example.lab_3.apartment.model;
 
-import org.example.lab_3.amenity.Amenity;
+import org.example.lab_3.amenity.model.Amenity;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ public class House extends Apartment {
 
     private final Type type;
 
-    public House(String name, Type type, int maxSpace, List<Amenity> amenities) {
-        super(name, maxSpace, amenities);
+    public House(String name, Type type, int maxSpace, double price, List<Amenity> amenities) {
+        super(name, maxSpace, price, amenities);
         this.type = type;
     }
 
@@ -22,16 +22,14 @@ public class House extends Apartment {
         System.out.println("House max space for animals: " + super.getAnimalMaxSpace());
 
         System.out.println("House amenities: ");
-        for (Amenity amenity : super.getAmenities()) {
-            System.out.println(amenity.getAmenityType());
-        }
+        super.getAmenities().stream()
+                .map(Amenity::getAmenityType)
+                .forEach(System.out::println);
         System.out.println();
     }
 
     // Getter
-
     public Type getType() {
         return this.type;
     }
 }
-

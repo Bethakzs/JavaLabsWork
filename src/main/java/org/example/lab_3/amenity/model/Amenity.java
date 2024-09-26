@@ -1,9 +1,9 @@
-package org.example.lab_3.amenity;
+package org.example.lab_3.amenity.model;
 
 public class Amenity {
-    private AmenityType amenityType;
-    private int additionalSpace;
-    private Category category;
+    private final AmenityType amenityType;
+    private final int additionalSpace;
+    private final Category category;
 
     public Amenity(AmenityType amenityType) {
         this.amenityType = amenityType;

@@ -1,15 +1,15 @@
-package org.example.lab_3.apartment;
+package org.example.lab_3.apartment.model;
 
-import org.example.lab_3.amenity.Amenity;
+import org.example.lab_3.amenity.model.Amenity;
 
 import java.util.List;
 
-public class Room extends Apartment{
+public class Room extends Apartment {
     private final int number;
     private final Type type;
 
-    public Room(String name, Type type, int maxSpace, int number, List<Amenity> amenities) {
-        super(name, maxSpace, amenities);
+    public Room(String name, Type type, int maxSpace, int number,  double price, List<Amenity> amenities) {
+        super(name, maxSpace, price, amenities);
         this.type = type;
         this.number = number;
     }
@@ -22,10 +22,11 @@ public class Room extends Apartment{
         System.out.println("Room max space for adults: " + super.getMaxSpace());
         System.out.println("Room max space for children: " + super.getChildrenMaxSpace());
         System.out.println("Room max space for animals: " + super.getAnimalMaxSpace());
+
         System.out.println("Room amenities: ");
-        for (Amenity amenity : super.getAmenities()) {
-            System.out.println(amenity.getAmenityType());
-        }
+        super.getAmenities().stream()
+                .map(Amenity::getAmenityType)
+                .forEach(System.out::println);
         System.out.println();
     }
 
