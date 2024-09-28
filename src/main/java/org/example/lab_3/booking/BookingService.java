@@ -1,5 +1,7 @@
 package org.example.lab_3.booking;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.lab_3.apartment.model.Apartment;
 import org.example.lab_3.booking.model.Booking;
 import org.example.lab_3.consumer.model.Consumer;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BookingService {
+	private static final Logger LOGGER = LogManager.getLogger(BookingService.class);
 	private final Map<Consumer, Map<Apartment, LocalDate[]>> bookings = new HashMap<>();
 	private final List<Booking> bookingHistory = new ArrayList<>();
 
@@ -31,7 +34,7 @@ public class BookingService {
 		Booking booking = new Booking(consumer, apartment, startDate, endDate, pricePerDay);
 		bookingHistory.add(booking);
 
-		System.out.println("Apartment " + apartment.getName() + " booked for " + consumer.firstName() + " " + consumer.lastName() + " from " + startDate + " to " + endDate);
+		LOGGER.info("Apartment {} booked for {} {} from {} to {}", apartment.getName(), consumer.firstName(), consumer.lastName(), startDate, endDate);
 	}
 
 	private boolean isApartmentAlreadyBooked(Apartment apartment, LocalDate startDate, LocalDate endDate) {
@@ -49,9 +52,10 @@ public class BookingService {
 	}
 
 	public void printBookings() {
+		LOGGER.info("Bookings:");
 		bookings.forEach((consumer, apartmentBookings) ->
 				apartmentBookings.forEach((apartment, dates) ->
-						System.out.println(consumer.firstName() + " " + consumer.lastName() + " booked " + apartment.getName() + " from " + dates[0] + " to " + dates[1])
+						LOGGER.info("{} {} booked {} from {} to {}", consumer.firstName(), consumer.lastName(), apartment.getName(), dates[0], dates[1])
 				)
 		);
 	}
@@ -60,7 +64,7 @@ public class BookingService {
 		return bookingHistory.stream()
 				.filter(booking -> booking.getApartment().equals(apartment))
 				.findFirst()
-				.orElseThrow(() -> new IllegalArgumentException("No bookings found for the apartment"));
+				.orElseThrow(() -> new IllegalArgumentException("No bookings found for the apartment" + apartment.getName()));
 	}
 
 	// Getter

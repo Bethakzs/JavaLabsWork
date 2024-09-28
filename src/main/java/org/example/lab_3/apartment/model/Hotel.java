@@ -1,5 +1,7 @@
 package org.example.lab_3.apartment.model;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.lab_3.amenity.model.Amenity;
 
 import java.util.HashSet;
@@ -7,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Hotel extends Apartment {
+	private static final Logger LOGGER = LogManager.getLogger(Hotel.class);
 	private final List<Room> rooms;
 
 	public Hotel(String name, double price, Type type, List<Amenity> amenities, List<Room> rooms) {
@@ -16,34 +19,33 @@ public class Hotel extends Apartment {
 
 	@Override
 	public void printInfo() {
-		System.out.println("Hotel name: " + getName());
-		System.out.println("Hotel type: " + getType());
-		System.out.println("Hotel amenities: ");
+		LOGGER.info("Hotel name: {}", super.getName());
+		LOGGER.info("Hotel type: {}", super.getType());
+		LOGGER.info("Hotel amenities: ");
 		getAmenities().stream()
 				.map(Amenity::getAmenityType)
-				.forEach(System.out::println);
+				.forEach(amenityType -> LOGGER.info("Amenity: {}", amenityType));
 
-		System.out.println("Rooms: ");
-		rooms.forEach(room -> System.out.println("Room name: " + room.getName()));
+		LOGGER.info("Rooms: ");
+		rooms.forEach(LOGGER::info);
 	}
 
 	public void printRoomInfo(Room room) {
-		System.out.println("Room name: " + room.getName());
-		System.out.println("Room max space for adults: " + room.getMaxSpace());
-		System.out.println("Room max space for children: " + room.getChildrenMaxSpace());
-		System.out.println("Room max space for animals: " + room.getAnimalMaxSpace());
+		LOGGER.info("Room name: {}", room.getName());
+		LOGGER.info("Room max space for adults: {}", room.getMaxSpace());
+		LOGGER.info("Room max space for children: {}", room.getChildrenMaxSpace());
+		LOGGER.info("Room max space for animals: {}", room.getAnimalMaxSpace());
 
 		Set<Amenity> uniqueAmenities = new HashSet<>(room.getAmenities());
 		uniqueAmenities.addAll(getAmenities());
 
 		if (uniqueAmenities.isEmpty()) {
-			System.out.println("No amenities available for this room and hotel.\n");
+			LOGGER.info("No amenities available for this room and hotel.\n");
 		} else {
-			System.out.println("Combined amenities: ");
+			LOGGER.info("Combined amenities: ");
 			uniqueAmenities.stream()
 					.map(Amenity::getAmenityType)
-					.forEach(System.out::println);
-			System.out.println();
+					.forEach(LOGGER::info);
 		}
 	}
 }

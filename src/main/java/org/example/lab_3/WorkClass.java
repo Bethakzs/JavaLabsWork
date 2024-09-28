@@ -1,5 +1,7 @@
 package org.example.lab_3;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.lab_3.amenity.model.Amenity;
 import org.example.lab_3.amenity.model.AmenityType;
 import org.example.lab_3.apartment.ApartmentService;
@@ -15,48 +17,47 @@ import java.util.List;
 import static org.example.lab_3.amenity.model.Category.*;
 
 public class WorkClass {
-
-	private static final String OPERATOR = "--------------------------------------------------";
+	private static final Logger LOGGER = LogManager.getLogger(WorkClass.class);
+	private static final String OPERATOR = "\n\n\n";
 
 	public static void main(String[] args) {
-		// Amenity
 		TestResources.house3.printInfo();
-		System.out.println(OPERATOR);
+		LOGGER.info(OPERATOR);
 		TestResources.hotel1.printInfo();
-		System.out.println(OPERATOR);
-		TestResources.hotel1.printRoomInfo(TestResources.room1);
-		System.out.println(OPERATOR);
+		LOGGER.info(OPERATOR);
+		TestResources.hotel1.printRoomInfo(TestResources.room1); // subtask 4
+		LOGGER.info(OPERATOR);
 
-		// BookingService
 		BookingService bookingService = new BookingService();
 
-		TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1);
+		TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1); // subtask 6
 		try {
-			bookingService.bookApartment(TestResources.consumer1, TestResources.house1, TestResources.bookingDate1, TestResources.bookingDate2);
-			bookingService.bookApartment(TestResources.consumer1, TestResources.house1, TestResources.bookingDate1, TestResources.bookingDate1);
-		} catch (ApartmentAlreadyBooked e) {
-			System.err.println(e.getMessage());
+			bookingService.bookApartment(TestResources.consumer1, TestResources.house1, // subtask 7
+					TestResources.bookingDate1, TestResources.bookingDate2);
+			bookingService.bookApartment(TestResources.consumer1, TestResources.house1,
+					TestResources.bookingDate1, TestResources.bookingDate1);
+		} catch (ApartmentAlreadyBooked e) { // subtask 6
+			LOGGER.error(e.getMessage());
 		}
 		TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1);
 
 		bookingService.printBookings();
 
 		try {
-			System.out.println(bookingService.getBookingHistoryForApartment(TestResources.house1));
-			System.out.println(bookingService.getBookingHistoryForApartment(TestResources.house2));
+			LOGGER.info(bookingService.getBookingHistoryForApartment(TestResources.house1)); // subtask additional
+			LOGGER.info(bookingService.getBookingHistoryForApartment(TestResources.house2));
 		} catch (IllegalArgumentException e) {
-			System.err.println(e.getMessage());
+			LOGGER.error(e.getMessage());
 		}
 
-		System.out.println(OPERATOR);
+		LOGGER.info(OPERATOR);
 
-		// ApartmentService
 		ApartmentService apartmentService = new ApartmentService(TestResources.getApartments(), bookingService.getBookingHistory());
 
-		apartmentService.printStatistics(TestResources.house1); // 2000 * 0,8 = 1600 * 6 = 9600 + 4000 = 13600
+		apartmentService.printStatistics(TestResources.house1); // 2000 * 0,8 = 1600 * 6 = 9600 + 2000 = 11600 subtask 8
 
-		List<Apartment> foundApartments = apartmentService.searchApartment(AmenityType.WI_FI, Type.LUXURY);
-		foundApartments.forEach(apartment -> System.out.println(apartment.getName()));
+		List<Apartment> foundApartments = apartmentService.searchApartment(AmenityType.WI_FI, Type.LUXURY); // subtask 10
+		foundApartments.forEach(apartment -> LOGGER.info(apartment.getName()));
 	}
 
 	static class TestResources {
@@ -104,10 +105,10 @@ public class WorkClass {
 		}
 
 		private static void checkIsDateAvailable(BookingService bookingService, Apartment apartment, LocalDate date) {
-			if (bookingService.isDateAvailable(TestResources.house1, date)) {
-				System.out.println("Apartment " + apartment.getName() + " is available on " + date);
+			if (bookingService.isDateAvailable(apartment, date)) {
+				LOGGER.info("Apartment {} is available on {}", apartment.getName(), date);
 			} else {
-				System.out.println("Apartment " + apartment.getName() + " is not available on " + date);
+				LOGGER.error("Apartment {} is NOT available on {}", apartment.getName(), date);
 			}
 		}
 

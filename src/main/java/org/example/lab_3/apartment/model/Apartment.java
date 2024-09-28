@@ -35,4 +35,9 @@ public abstract class Apartment {
 	public List<Amenity> getAmenities() {
 		return amenities;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

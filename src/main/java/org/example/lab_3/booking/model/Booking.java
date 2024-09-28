@@ -6,7 +6,7 @@ import org.example.lab_3.consumer.model.Consumer;
 import java.time.LocalDate;
 
 public class Booking {
-	private static final int MARCH = 3; // Березень
+	private static final int MARCH = 3;
 	private static final int NOVEMBER = 11;
 	private static final double DISCOUNT = 0.8;
 
@@ -22,7 +22,7 @@ public class Booking {
 		this.apartment = apartment;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.days = (int) (endDate.toEpochDay() - startDate.toEpochDay());
+		this.days = (int) (endDate.toEpochDay() - startDate.toEpochDay() - 1); // Last day is not included
 		this.pricePerDay = pricePerDay;
 	}
 
@@ -30,7 +30,7 @@ public class Booking {
 		double totalCost = 0.0;
 		LocalDate currentDay = startDate;
 
-		while (!currentDay.isAfter(endDate)) {
+		while (!currentDay.isAfter(endDate.minusDays(1))) {
 			double dayCost = pricePerDay;
 
 			if (currentDay.getMonthValue() == MARCH || currentDay.getMonthValue() == NOVEMBER) {
@@ -55,13 +55,13 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking |" +
-				"consumer=" + consumer +
-				", apartment=" + apartment +
-				", startDate=" + startDate +
-				", endDate=" + endDate +
-				", days=" + days +
-				", pricePerDay=" + pricePerDay +
-				'|' + '\n';
+		return "Booking Details:\n" +
+				consumer + "\n" +
+				"Apartment: " + apartment + "     " +
+				"Start Date: " + startDate + "     " +
+				"End Date: " + endDate + "     " +
+				"Days: " + days + "     " +
+				"Price per Day: " + pricePerDay;
 	}
+
 }
