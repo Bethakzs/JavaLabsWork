@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.example.lab_3.apartment.model.Apartment;
 import org.example.lab_3.booking.model.Booking;
 import org.example.lab_3.consumer.model.Consumer;
-import org.example.lab_3.error.ApartmentAlreadyBooked;
+import org.example.lab_3.error.ApartmentAlreadyBookedException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ public class BookingService {
 	private final Map<Consumer, Map<Apartment, LocalDate[]>> bookings = new HashMap<>();
 	private final List<Booking> bookingHistory = new ArrayList<>();
 
-	public void bookApartment(Consumer consumer, Apartment apartment, LocalDate startDate, LocalDate endDate) throws ApartmentAlreadyBooked {
+	public void bookApartment(Consumer consumer, Apartment apartment, LocalDate startDate, LocalDate endDate) throws ApartmentAlreadyBookedException {
 		if (bookings.containsKey(consumer) && bookings.get(consumer).containsKey(apartment)) { // Check if the consumer has already booked the apartment
-			throw new ApartmentAlreadyBooked("Apartment already booked for this consumer");
+			throw new ApartmentAlreadyBookedException("Apartment already booked for this consumer");
 		}
 
 		if (isApartmentAlreadyBooked(apartment, startDate, endDate)) { // Check if the apartment is already booked in the given date range
-			throw new ApartmentAlreadyBooked("Apartment is already booked in the given date range");
+			throw new ApartmentAlreadyBookedException("Apartment is already booked in the given date range");
 		}
 
 		Map<Apartment, LocalDate[]> consumerBookings = bookings.computeIfAbsent(consumer, k -> new HashMap<>());

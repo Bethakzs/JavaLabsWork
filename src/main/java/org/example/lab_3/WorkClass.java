@@ -8,7 +8,7 @@ import org.example.lab_3.apartment.ApartmentService;
 import org.example.lab_3.apartment.model.*;
 import org.example.lab_3.booking.BookingService;
 import org.example.lab_3.consumer.model.Consumer;
-import org.example.lab_3.error.ApartmentAlreadyBooked;
+import org.example.lab_3.error.ApartmentAlreadyBookedException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class WorkClass {
 					TestResources.bookingDate1, TestResources.bookingDate2);
 			bookingService.bookApartment(TestResources.consumer1, TestResources.house1,
 					TestResources.bookingDate1, TestResources.bookingDate1);
-		} catch (ApartmentAlreadyBooked e) { // subtask 6
+		} catch (ApartmentAlreadyBookedException e) { // subtask 6
 			LOGGER.error(e.getMessage());
 		}
 		TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1);
