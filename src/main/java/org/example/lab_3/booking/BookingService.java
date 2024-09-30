@@ -6,6 +6,7 @@ import org.example.lab_3.apartment.model.Apartment;
 import org.example.lab_3.booking.model.Booking;
 import org.example.lab_3.consumer.model.Consumer;
 import org.example.lab_3.error.ApartmentAlreadyBookedException;
+import org.example.lab_3.error.ApartmentUnavailableForDateRangeException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,13 +19,13 @@ public class BookingService {
 	private final Map<Consumer, Map<Apartment, LocalDate[]>> bookings = new HashMap<>();
 	private final List<Booking> bookingHistory = new ArrayList<>();
 
-	public void bookApartment(Consumer consumer, Apartment apartment, LocalDate startDate, LocalDate endDate) throws ApartmentAlreadyBookedException {
+	public void bookApartment(Consumer consumer, Apartment apartment, LocalDate startDate, LocalDate endDate) {
 		if (bookings.containsKey(consumer) && bookings.get(consumer).containsKey(apartment)) { // Check if the consumer has already booked the apartment
 			throw new ApartmentAlreadyBookedException("Apartment already booked for this consumer");
 		}
 
-		if (isApartmentAlreadyBooked(apartment, startDate, endDate)) { // Check if the apartment is already booked in the given date range
-			throw new ApartmentAlreadyBookedException("Apartment is already booked in the given date range");
+		if (isApartmentAlreadyBookedInThisRange(apartment, startDate, endDate)) { // Check if the apartment is already booked in the given date range
+			throw new ApartmentUnavailableForDateRangeException("Apartment is already booked in the given date range");
 		}
 
 		Map<Apartment, LocalDate[]> consumerBookings = bookings.computeIfAbsent(consumer, k -> new HashMap<>());
@@ -37,7 +38,7 @@ public class BookingService {
 		LOGGER.info("Apartment {} booked for {} {} from {} to {}", apartment.getName(), consumer.firstName(), consumer.lastName(), startDate, endDate);
 	}
 
-	private boolean isApartmentAlreadyBooked(Apartment apartment, LocalDate startDate, LocalDate endDate) {
+	private boolean isApartmentAlreadyBookedInThisRange(Apartment apartment, LocalDate startDate, LocalDate endDate) {
 		return bookings.values().stream()
 				.filter(consumerBookings -> consumerBookings.containsKey(apartment))
 				.map(consumerBookings -> consumerBookings.get(apartment))

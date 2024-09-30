@@ -1,6 +1,7 @@
 package org.example.lab_3.apartment.model;
 
 import org.example.lab_3.amenity.model.Amenity;
+import org.example.lab_3.error.CategoryUnknownException;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public abstract class ApartmentCapacity extends Apartment {
 					case ADULT -> this.maxSpace += amenity.getAdditionalSpace();
 					case CHILD -> this.childrenMaxSpace += amenity.getAdditionalSpace();
 					case ANIMAL -> this.animalMaxSpace += amenity.getAdditionalSpace();
-					default -> throw new IllegalArgumentException("Incorrect category");
+					default -> throw new CategoryUnknownException("Unknown category: " + amenity.getCategory());
 				}
 			}
 		});
