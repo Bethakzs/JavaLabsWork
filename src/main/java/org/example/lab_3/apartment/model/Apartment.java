@@ -5,73 +5,39 @@ import org.example.lab_3.amenity.model.Amenity;
 import java.util.List;
 
 public abstract class Apartment {
-    private final String name;
-    private int maxSpace;
-    private int childrenMaxSpace = 0;
-    private int animalMaxSpace = 0;
-    private final List<Amenity> amenities;
-    private final double price;
-    private final Type type;
+	private final String name;
+	private final List<Amenity> amenities;
+	private final double price;
+	private final Type type;
 
-    public Apartment(String name, int maxSpace, double price, Type type, List<Amenity> amenities) {
-        this.name = name;
-        this.maxSpace = maxSpace;
-        this.amenities = amenities;
-        this.price = price;
-        this.type = type;
+	protected Apartment(String name, double price, Type type, List<Amenity> amenities) {
+		this.name = name;
+		this.amenities = amenities;
+		this.price = price;
+		this.type = type;
+	}
 
-        amenities.forEach(amenity -> {
-            if (amenity.getCategory() != null) {
-                switch (amenity.getCategory()) {
-                    case ADULT -> this.maxSpace += amenity.getAdditionalSpace();
-                    case CHILD -> this.childrenMaxSpace += amenity.getAdditionalSpace();
-                    case ANIMAL -> this.animalMaxSpace += amenity.getAdditionalSpace();
-                    default -> throw new IllegalArgumentException("Incorrect category");
-                }
-            }
-        });
-    }
+	public abstract void printInfo();
 
-    public abstract void printInfo();
+	// Getters
+	public String getName() {
+		return name;
+	}
 
-    // Getters
-    public String getName() {
-        return name;
-    }
+	public double getPrice() {
+		return price;
+	}
 
-    public int getMaxSpace() {
-        return maxSpace;
-    }
+	public Type getType() {
+		return type;
+	}
 
-    public int getChildrenMaxSpace() {
-        return childrenMaxSpace;
-    }
+	public List<Amenity> getAmenities() {
+		return amenities;
+	}
 
-    public int getAnimalMaxSpace() {
-        return animalMaxSpace;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public List<Amenity> getAmenities() {
-        return amenities;
-    }
-
-    public void setMaxSpace(int maxSpace) {
-        this.maxSpace = maxSpace;
-    }
-
-    public void setChildrenMaxSpace(int childrenMaxSpace) {
-        this.childrenMaxSpace = childrenMaxSpace;
-    }
-
-    public void setAnimalMaxSpace(int animalMaxSpace) {
-        this.animalMaxSpace = animalMaxSpace;
-    }
+	@Override
+	public String toString() {
+		return name;
+	}
 }

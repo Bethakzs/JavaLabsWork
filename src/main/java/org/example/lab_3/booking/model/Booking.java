@@ -6,57 +6,62 @@ import org.example.lab_3.consumer.model.Consumer;
 import java.time.LocalDate;
 
 public class Booking {
-    private final Consumer consumer;
-    private final Apartment apartment;
-    private final LocalDate startDate;
-    private final LocalDate endDate;
-    private final int days;
-    private final double pricePerDay;
+	private static final int MARCH = 3;
+	private static final int NOVEMBER = 11;
+	private static final double DISCOUNT = 0.8;
 
-    public Booking(Consumer consumer, Apartment apartment, LocalDate startDate, LocalDate endDate, double pricePerDay) {
-        this.consumer = consumer;
-        this.apartment = apartment;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.days = (int) (endDate.toEpochDay() - startDate.toEpochDay());
-        this.pricePerDay = pricePerDay;
-    }
+	private final Consumer consumer;
+	private final Apartment apartment;
+	private final LocalDate startDate;
+	private final LocalDate endDate;
+	private final int days;
+	private final double pricePerDay;
 
-    public double getTotalPrice() {
-        double totalCost = 0.0;
-        LocalDate currentDay = startDate;
+	public Booking(Consumer consumer, Apartment apartment, LocalDate startDate, LocalDate endDate, double pricePerDay) {
+		this.consumer = consumer;
+		this.apartment = apartment;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.days = (int) (endDate.toEpochDay() - startDate.toEpochDay() - 1); // Last day is not included
+		this.pricePerDay = pricePerDay;
+	}
 
-        while (!currentDay.isAfter(endDate)) {
-            double dayCost = pricePerDay;
+	public double getTotalPrice() {
+		double totalCost = 0.0;
+		LocalDate currentDay = startDate;
 
-            if (currentDay.getMonthValue() == 3 || currentDay.getMonthValue() == 11) {
-                dayCost *= 0.8; // Discount 20%
-            }
+		while (!currentDay.isAfter(endDate.minusDays(1))) {
+			double dayCost = pricePerDay;
 
-            totalCost += dayCost;
-            currentDay = currentDay.plusDays(1); // Move to the next day like index
-        }
+			if (currentDay.getMonthValue() == MARCH || currentDay.getMonthValue() == NOVEMBER) {
+				dayCost *= DISCOUNT;
+			}
 
-        return totalCost;
-    }
+			totalCost += dayCost;
+			currentDay = currentDay.plusDays(1); // Move to the next day like index
+		}
 
-    public Apartment getApartment() {
-        return apartment;
-    }
+		return totalCost;
+	}
 
-    public int getDays() {
-        return days;
-    }
+	// Getters
+	public Apartment getApartment() {
+		return apartment;
+	}
 
-    @Override
-    public String toString() {
-        return "Booking |" +
-                "consumer=" + consumer +
-                ", apartment=" + apartment +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", days=" + days +
-                ", pricePerDay=" + pricePerDay +
-                '|' + '\n';
-    }
+	public int getDays() {
+		return days;
+	}
+
+	@Override
+	public String toString() {
+		return "Booking Details:\n" +
+				consumer + "\n" +
+				"Apartment: " + apartment + "     " +
+				"Start Date: " + startDate + "     " +
+				"End Date: " + endDate + "     " +
+				"Days: " + days + "     " +
+				"Price per Day: " + pricePerDay;
+	}
+
 }

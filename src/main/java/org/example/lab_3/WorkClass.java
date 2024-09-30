@@ -1,12 +1,14 @@
 package org.example.lab_3;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.lab_3.amenity.model.Amenity;
 import org.example.lab_3.amenity.model.AmenityType;
 import org.example.lab_3.apartment.ApartmentService;
 import org.example.lab_3.apartment.model.*;
 import org.example.lab_3.booking.BookingService;
 import org.example.lab_3.consumer.model.Consumer;
-import org.example.lab_3.error.ApartmentAlreadyBooked;
+import org.example.lab_3.error.ApartmentAlreadyBookedException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,100 +17,103 @@ import java.util.List;
 import static org.example.lab_3.amenity.model.Category.*;
 
 public class WorkClass {
+	private static final Logger LOGGER = LogManager.getLogger(WorkClass.class);
+	private static final String OPERATOR = "\n\n\n";
 
-    public static void main(String[] args) {
-        // Amenity
-        TestResources.house3.printInfo();
-        System.out.println("--------------------------------------------------");
-        TestResources.room2.printInfo();
-        System.out.println("--------------------------------------------------");
-        TestResources.hotel1.printInfo();
-        System.out.println("--------------------------------------------------");
-        TestResources.hotel1.printRoomInfo(TestResources.room1);
-        System.out.println("--------------------------------------------------");
+	public static void main(String[] args) {
+		TestResources.house3.printInfo();
+		LOGGER.info(OPERATOR);
+		TestResources.hotel1.printInfo();
+		LOGGER.info(OPERATOR);
+		TestResources.hotel1.printRoomInfo(TestResources.room1); // subtask 4
+		LOGGER.info(OPERATOR);
 
-        // BookingService
-        BookingService bookingService = new BookingService();
+		BookingService bookingService = new BookingService();
 
-        TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1);
-        try {
-            bookingService.bookApartment(TestResources.consumer1, TestResources.house1, TestResources.bookingDate1, TestResources.bookingDate2);
-            bookingService.bookApartment(TestResources.consumer1, TestResources.house1, TestResources.bookingDate1, TestResources.bookingDate1);
-        } catch (ApartmentAlreadyBooked e) {
-            System.err.println(e.getMessage());
-        }
-        TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1);
+		TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1); // subtask 6
+		try {
+			bookingService.bookApartment(TestResources.consumer1, TestResources.house1, // subtask 7
+					TestResources.bookingDate1, TestResources.bookingDate2);
+			bookingService.bookApartment(TestResources.consumer1, TestResources.house1,
+					TestResources.bookingDate1, TestResources.bookingDate1);
+		} catch (ApartmentAlreadyBookedException e) { // subtask 6
+			LOGGER.error(e.getMessage());
+		}
+		TestResources.checkIsDateAvailable(bookingService, TestResources.house1, TestResources.bookingDate1);
 
-        bookingService.printBookings();
+		bookingService.printBookings();
 
-        try {
-            System.out.println(bookingService.getBookingHistoryForApartment(TestResources.house1));
-            System.out.println(bookingService.getBookingHistoryForApartment(TestResources.house2));
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
+		try {
+			LOGGER.info(bookingService.getBookingHistoryForApartment(TestResources.house1)); // subtask additional
+			LOGGER.info(bookingService.getBookingHistoryForApartment(TestResources.house2));
+		} catch (IllegalArgumentException e) {
+			LOGGER.error(e.getMessage());
+		}
 
-        System.out.println("--------------------------------------------------");
+		LOGGER.info(OPERATOR);
 
-        // ApartmentService
-        ApartmentService apartmentService = new ApartmentService(TestResources.getApartments(), bookingService.getBookingHistory());
+		ApartmentService apartmentService = new ApartmentService(TestResources.getApartments(), bookingService.getBookingHistory());
 
-        apartmentService.printStatistics(TestResources.house1); // 2000 * 0,8 = 1600 * 6 = 9600 + 4000 = 13600
+		apartmentService.printStatistics(TestResources.house1); // 2000 * 0,8 = 1600 * 6 = 9600 + 2000 = 11600 subtask 8
 
-        List<Apartment> foundApartments = apartmentService.searchApartment(AmenityType.WI_FI, Type.LUXURY);
-        foundApartments.forEach(apartment -> System.out.println(apartment.getName()));
-    }
+		List<Apartment> foundApartments = apartmentService.searchApartment(AmenityType.WI_FI, Type.LUXURY); // subtask 10
+		foundApartments.forEach(apartment -> LOGGER.info(apartment.getName()));
+	}
 
-    static class TestResources {
-        private final static Amenity amenity1 = new Amenity(AmenityType.WI_FI);
-        private final static Amenity amenity2 = new Amenity(AmenityType.KITCHEN);
-        private final static Amenity amenity3 = new Amenity(AmenityType.BATHROOM);
-        private final static Amenity amenity4 = new Amenity(AmenityType.SECOND_BATHROOM);
-        private final static Amenity amenity5 = new Amenity(AmenityType.SPA);
-        private final static Amenity amenity6 = new Amenity(AmenityType.FOOTBALL_STADIUM);
-        private final static Amenity amenity7 = new Amenity(AmenityType.SWIMMING_POOL);
-        private final static Amenity amenity8 = new Amenity(AmenityType.SOFA, 1, ADULT);
-        private final static Amenity amenity9 = new Amenity(AmenityType.DOUBLE_SOFA, 2, ADULT);
-        private final static Amenity amenity10 = new Amenity(AmenityType.CHILD_BED, 1, CHILD);
-        private final static Amenity amenity11 = new Amenity(AmenityType.DOG_HOUSE, 1, ANIMAL);
+	static class TestResources {
+		private static final Amenity amenity1 = new Amenity(AmenityType.WI_FI);
+		private static final Amenity amenity2 = new Amenity(AmenityType.KITCHEN);
+		private static final Amenity amenity3 = new Amenity(AmenityType.BATHROOM);
+		private static final Amenity amenity4 = new Amenity(AmenityType.SECOND_BATHROOM);
+		private static final Amenity amenity5 = new Amenity(AmenityType.SPA);
+		private static final Amenity amenity6 = new Amenity(AmenityType.FOOTBALL_STADIUM);
+		private static final Amenity amenity7 = new Amenity(AmenityType.SWIMMING_POOL);
+		private static final Amenity amenity8 = new Amenity(AmenityType.SOFA, 1, ADULT);
+		private static final Amenity amenity9 = new Amenity(AmenityType.DOUBLE_SOFA, 2, ADULT);
+		private static final Amenity amenity10 = new Amenity(AmenityType.CHILD_BED, 1, CHILD);
+		private static final Amenity amenity11 = new Amenity(AmenityType.DOG_HOUSE, 1, ANIMAL);
 
-        private final static Apartment house1 = new House("House 1", Type.ECONOMIC, 3, 2000,
-                new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity5, amenity9)));
-        private final static Apartment house2 = new House("House 2", Type.STANDARD, 6, 2500,
-                new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity5, amenity8)));
-        private final static Apartment house3 = new House("House 3", Type.LUXURY, 10, 5000,
-                new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity4, amenity5, amenity6, amenity7, amenity10)));
-        private final static Apartment house4 = new House("House 4", Type.LUXURY, 3, 7000,
-                new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity4, amenity5, amenity6, amenity7, amenity11)));
+		private static final Apartment house1 = new House("House 1", Type.ECONOMIC, 3, 2000,
+				new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity5, amenity9)));
+		private static final Apartment house2 = new House("House 2", Type.STANDARD, 6, 2500,
+				new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity5, amenity8)));
+		private static final Apartment house3 = new House("House 3", Type.LUXURY, 10, 5000,
+				new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity4, amenity5, amenity6, amenity7, amenity10)));
+		private static final Apartment house4 = new House("House 4", Type.LUXURY, 3, 7000,
+				new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity4, amenity5, amenity6, amenity7, amenity11)));
 
-        private final static Room room1 = new Room("Room 1", Type.APARTMENT, 3, 101, 800,
-                new ArrayList<>(List.of(amenity1, amenity2, amenity10)));
-        private final static Room room2 = new Room("Room 2", Type.APARTMENT, 4, 102, 1000,
-                new ArrayList<>(List.of(amenity1, amenity4, amenity9)));
-        private final static Room room3 = new Room("Room 3", Type.APARTMENT, 3, 103, 1500,
-                new ArrayList<>());
+		private static final Room room1 = new Room("Room 1", Type.APARTMENT, 3, 800,
+				new ArrayList<>(List.of(amenity1, amenity2, amenity10)));
+		private static final Room room2 = new Room("Room 2", Type.APARTMENT, 4, 1000,
+				new ArrayList<>(List.of(amenity1, amenity4, amenity9)));
+		private static final Room room3 = new Room("Room 3", Type.APARTMENT, 3, 1500,
+				new ArrayList<>());
 
-        private final static Hotel hotel1 = new Hotel("Hotel 1", 5000, Type.LUXURY,
-                new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity11)),
-                new ArrayList<>(List.of(room1, room2, room3)));
+		private static final Hotel hotel1 = new Hotel("Hotel 1", 5000, Type.LUXURY,
+				new ArrayList<>(List.of(amenity1, amenity2, amenity3, amenity11)),
+				new ArrayList<>(List.of(room1, room2, room3)));
 
-        private final static Consumer consumer1 = new Consumer("Ivan", "Ivanenko", "+380123456789", "ivan@gmail.com");
+		private static final Consumer consumer1 = new Consumer("Ivan", "Ivanenko", "+380123456789", "ivan@gmail.com");
 
-        private final static LocalDate bookingDate1 = LocalDate.parse("2024-03-26");
-        private final static LocalDate bookingDate2 = LocalDate.parse("2024-04-02");
+		private static final LocalDate bookingDate1 = LocalDate.parse("2024-03-26");
+		private static final LocalDate bookingDate2 = LocalDate.parse("2024-04-02");
 
-        private static List<Apartment> getApartments() {
-            return List.of(house1, house2, house3, house4
-                    , room1, room2, room3
-                    , hotel1);
-        }
+		private static List<Apartment> getApartments() {
+			return List.of(house1, house2, house3, house4
+					, room1, room2, room3
+					, hotel1);
+		}
 
-        private static void checkIsDateAvailable(BookingService bookingService, Apartment apartment, LocalDate date) {
-            if (bookingService.isDateAvailable(TestResources.house1, date)) {
-                System.out.println("Apartment " + apartment.getName() + " is available on " + date);
-            } else {
-                System.out.println("Apartment " + apartment.getName() + " is not available on " + date);
-            }
-        }
-    }
+		private static void checkIsDateAvailable(BookingService bookingService, Apartment apartment, LocalDate date) {
+			if (bookingService.isDateAvailable(apartment, date)) {
+				LOGGER.info("Apartment {} is available on {}", apartment.getName(), date);
+			} else {
+				LOGGER.error("Apartment {} is NOT available on {}", apartment.getName(), date);
+			}
+		}
+
+		private TestResources() {
+			throw new IllegalStateException("Utility class");
+		}
+	}
 }
