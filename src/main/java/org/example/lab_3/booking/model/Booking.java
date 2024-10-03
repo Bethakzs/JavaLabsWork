@@ -22,7 +22,7 @@ public class Booking {
 		this.apartment = apartment;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.days = (int) (endDate.toEpochDay() - startDate.toEpochDay() - 1); // Last day is not included
+		this.days = (int) (endDate.toEpochDay() - startDate.toEpochDay());
 		this.pricePerDay = pricePerDay;
 	}
 
