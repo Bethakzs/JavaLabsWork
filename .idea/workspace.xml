@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4feaaaa-fc92-48cd-8e19-3d3d84cbf674" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/WorkClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/apartment/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/booking/src/main/java/org/example/WorkClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/booking/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/booking/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/booking/src/main/java/org/example/Main.java" beforeDir="false" />
-    </list>
+    <list default="true" id="d4feaaaa-fc92-48cd-8e19-3d3d84cbf674" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,7 +196,7 @@
       <workItem from="1728158602219" duration="98000" />
       <workItem from="1728158960703" duration="1479000" />
       <workItem from="1728160453486" duration="2002000" />
-      <workItem from="1728205765963" duration="15900000" />
+      <workItem from="1728205765963" duration="16224000" />
     </task>
     <servers />
   </component>
