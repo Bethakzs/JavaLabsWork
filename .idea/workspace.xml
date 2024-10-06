@@ -5,65 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4feaaaa-fc92-48cd-8e19-3d3d84cbf674" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lab_4/apartment/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab_4/booking/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_1/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_3/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/Task1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/Task2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/Task3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/Task5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task4/CharCount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task4/CharCountUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task4/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task6/CurrencyConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task6/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task7/Bank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task7/BankAccount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task7/BankTransaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task7/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_1/task7/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task1/Graph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task1/TopOfGraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task1/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/Shape.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/ShapeWithVolume.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/area/Circle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/area/Rectangle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/area/Square.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/area/Triangle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/volume/Cube.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/volume/Pyramid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task2/volume/Sphere.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task3/Box.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task3/Good.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task3/Warehouse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_2/task3/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/WorkClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/amenity/model/Amenity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/amenity/model/AmenityType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/amenity/model/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/ApartmentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/model/Apartment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/model/ApartmentCapacity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/model/Hotel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/model/House.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/model/Room.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/apartment/model/Type.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/booking/BookingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/booking/model/Booking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/consumer/model/Consumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/error/ApartmentAlreadyBookedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/error/ApartmentUnavailableForDateRangeException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab_3/error/CategoryUnknownException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/WorkClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/apartment/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/apartment/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/booking/src/main/java/org/example/WorkClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/booking/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/booking/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/booking/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -97,12 +49,20 @@
     "Application.WorkClass.executor": "Run",
     "Application.org.example.WorkClass.executor": "Run",
     "Application.org.example.task2.WorkClass.executor": "Run",
+    "Maven.apartment [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.WorkClass (1).executor": "Run",
+    "Spring Boot.WorkClass.executor": "Run",
     "com.intellij.ide.FileNotInSourceRootChecker.no.check": "true",
-    "git-widget-placeholder": "remakeStructure",
+    "git-widget-placeholder": "remakeAuthService",
     "jdk.selected.JAVA_MODULE": "22",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/roman/IdeaProjects/JavaLabsWork/lab_4",
+    "last_opened_file_path": "C:/Users/roman/IdeaProjects/JavaLabsWork/lab_4/apartment/src/main/java/org/example/service/impl",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,35 +72,32 @@
     "project.structure.proportion": "0.15429688",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
-  <component name="RunManager" selected="Application.org.example.WorkClass">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="lab_1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="lab_2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\java\org\example\service\impl" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\java\org\example\service" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\resources\db\migration\changelog" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\resources" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\resources\db\migration\changelog" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\resources\db\migration" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\resources\db.migaration" />
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\apartment\src\main\resources\db.migration" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.entity" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.WorkClass">
     <configuration name="WorkClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.task7.WorkClass" />
       <module name="lab_1" />
@@ -193,13 +150,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WorkClass (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="booking" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.WorkClass" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorkClass" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="apartment" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.WorkClass" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.WorkClass" />
+        <item itemvalue="Spring Boot.WorkClass (1)" />
         <item itemvalue="Application.org.example.WorkClass" />
         <item itemvalue="Application.org.example.task2.WorkClass" />
         <item itemvalue="Application.WorkClass" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +202,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1728128248582</updated>
-      <workItem from="1728128249787" duration="3210000" />
+      <workItem from="1728128249787" duration="4460000" />
+      <workItem from="1728140187225" duration="13485000" />
+      <workItem from="1728158602219" duration="98000" />
+      <workItem from="1728158960703" duration="1479000" />
+      <workItem from="1728160453486" duration="2002000" />
+      <workItem from="1728205765963" duration="15900000" />
     </task>
     <servers />
   </component>

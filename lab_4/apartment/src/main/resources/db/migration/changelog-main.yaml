@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: roman_levkiv
+      changes:
+        - sqlFile:
+            path: classpath:db/migration/changelog/V1__create_user_table.sql
+            relativeToChangelogFile: false
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 2
+      author: roman_levkiv
+      changes:
+        - sqlFile:
+            path: classpath:db/migration/changelog/V2__create_apartment_table.sql
+            relativeToChangelogFile: false
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
