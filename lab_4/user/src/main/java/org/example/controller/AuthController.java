@@ -1,8 +1,8 @@
 package org.example.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.security.JwtTokenProvider;
 import org.example.dto.request.JwtRequest;
 import org.example.dto.request.UserRegistration;
 import org.example.dto.response.JwtResponse;
@@ -10,6 +10,7 @@ import org.example.entity.Role;
 import org.example.exception.BadRefreshTokenException;
 import org.example.exception.EmptyArgumentException;
 import org.example.exception.UserAlreadyExistException;
+import org.example.security.JwtTokenProvider;
 import org.example.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class AuthController {
 
 	@PreAuthorize("permitAll()")
 	@PostMapping("/login")
-	public ResponseEntity<?> createAuthToken(@RequestBody JwtRequest authRequest, HttpServletResponse response) {
+	public ResponseEntity<?> createAuthToken(@Valid @RequestBody JwtRequest authRequest, HttpServletResponse response) {
 		try {
 			JwtResponse jwtResponse = authService.createAuthToken(authRequest);
 			return getMapResponseEntity(response, jwtResponse);
@@ -42,7 +43,7 @@ public class AuthController {
 
 	@PreAuthorize("permitAll()")
 	@PostMapping("/registration")
-	public ResponseEntity<?> createNewUser(@RequestBody UserRegistration regRequest, HttpServletResponse response) {
+	public ResponseEntity<?> createNewUser(@Valid @RequestBody UserRegistration regRequest, HttpServletResponse response) {
 		try {
 			JwtResponse jwtResponse = authService.createNewUser(regRequest);
 			return getMapResponseEntity(response, jwtResponse);

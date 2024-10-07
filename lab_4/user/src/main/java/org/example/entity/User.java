@@ -3,15 +3,16 @@ package org.example.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
@@ -46,7 +47,7 @@ public class User {
 	@Column(name = "refresh_token")
 	private String refreshToken;
 
-	@ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class) // FetchType.EAGER that avoid n+1 problem
+	@ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class) // FetchType.EAGER that avoid N + 1 problem
 	@Enumerated(EnumType.STRING)
 	@CollectionTable(name = "user_roles")
 	@Column(name = "role", nullable = false, length = 20)

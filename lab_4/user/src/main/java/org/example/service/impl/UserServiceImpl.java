@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.dao.UserRepository;
 import org.example.dto.request.UserRegistration;
 import org.example.entity.Role;
@@ -28,6 +29,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
@@ -57,7 +59,7 @@ public class UserServiceImpl implements UserService {
 				.roles(new HashSet<>(Collections.singletonList(Role.ROLE_USER)))
 				.build();
 
-		// TODO: make confirm email that user is registered
+		//TODO: make confirm email that user is registered
 		return userRepository.save(user);
 	}
 
@@ -91,7 +93,7 @@ public class UserServiceImpl implements UserService {
 
 	private void updateEmail(User user, String newEmail) {
 		if (newEmail != null && !user.getEmail().equals(newEmail)) {
-			if (userRepository.existsByEmail(newEmail)) {
+			if (existsByEmail(newEmail)) {
 				throw new EmptyArgumentException(HttpStatus.CONFLICT.value(), "Email already in use");
 			}
 			user.setEmail(newEmail);
@@ -100,7 +102,7 @@ public class UserServiceImpl implements UserService {
 
 	private void updatePhoneNumber(User user, String newPhoneNumber) {
 		if (newPhoneNumber != null && !user.getPhoneNumber().equals(newPhoneNumber)) {
-			if (userRepository.existsByPhoneNumber(newPhoneNumber)) {
+			if (existsByPhoneNumber(newPhoneNumber)) {
 				throw new EmptyArgumentException(HttpStatus.CONFLICT.value(), "Phone number already in use");
 			}
 			user.setPhoneNumber(newPhoneNumber);
@@ -130,5 +132,15 @@ public class UserServiceImpl implements UserService {
 	public boolean isAvailableUser(UserRegistration registrationDTO) {
 		return userRepository.findByEmail(registrationDTO.getEmail()).isEmpty()
 				&& userRepository.findByPhoneNumber(registrationDTO.getPhoneNumber()).isEmpty();
+	}
+
+	@Override
+	public boolean existsByEmail(String email) {
+		return userRepository.existsByEmail(email);
+	}
+
+	@Override
+	public boolean existsByPhoneNumber(String phoneNumber) {
+		return userRepository.existsByPhoneNumber(phoneNumber);
 	}
 }

@@ -5,36 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4feaaaa-fc92-48cd-8e19-3d3d84cbf674" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog/V2__create_user_roles_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e97b9a42-f368-4322-99fd-3ff183fcc907.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e97b9a42-f368-4322-99fd-3ff183fcc907.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e97b9a42-f368-4322-99fd-3ff183fcc907/storage_v2/_src_/database/university.jupICw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e97b9a42-f368-4322-99fd-3ff183fcc907/storage_v2/_src_/database/university.jupICw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/WorkClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/WorkClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/config/AuthConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/dao/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/dto/request/JwtRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/dto/request/JwtRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/dto/request/UserRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/dto/request/UserRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/dto/response/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/dto/response/JwtResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/exception/BadRefreshTokenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/exception/BadRefreshTokenException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/exception/EmailNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/exception/UserNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/exception/EmptyArgumentException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/exception/EmptyArgumentException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/exception/UserAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/exception/UserAlreadyExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/service/impl/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/java/org/example/util/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/security/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/resources/db/migration/changelog-main.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog-main.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/resources/db/migration/changelog/V1__create_user_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog/V1__create_user_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_4/apartment/src/main/resources/db/migration/changelog/V2__create_apartment_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog/V2__create_apartment_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/java/org/example/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog-main.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog-main.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog/V1__create_user_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog/V1__create_user_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/user/src/main/resources/db/migration/changelog/V2__create_apartment_table.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,12 +55,14 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.WorkClass (2).executor": "Run",
     "Spring Boot.WorkClass.executor": "Run",
     "com.intellij.ide.FileNotInSourceRootChecker.no.check": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "userLogic",
     "jdk.selected.JAVA_MODULE": "22",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/roman/IdeaProjects/JavaLabsWork/lab_4",
+    "last_opened_file_path": "C:/Users/roman/IdeaProjects/JavaLabsWork/lab_4/user/src/main/resources/db/migration/changelog",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,65 +74,18 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\roman\IdeaProjects\JavaLabsWork\lab_4\user\src\main\resources\db\migration\changelog" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.WorkClass">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="lab_1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="lab_2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.task7.WorkClass" />
-      <module name="lab_1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.task7.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="org.example.WorkClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.WorkClass" />
       <module name="lab_3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.example.task2.WorkClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.task2.WorkClass" />
-      <module name="lab_2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.task2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,34 +106,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WorkClass (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="booking" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.WorkClass" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkClass (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="WorkClass" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="user" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.WorkClass" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkClass" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="booking" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.WorkClass" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.WorkClass" />
         <item itemvalue="Application.org.example.WorkClass" />
-        <item itemvalue="Application.org.example.task2.WorkClass" />
-        <item itemvalue="Application.WorkClass" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +143,8 @@
       <option name="presentableId" value="Default" />
       <updated>1728128248582</updated>
       <workItem from="1728128249787" duration="3210000" />
-      <workItem from="1728288983047" duration="15573000" />
+      <workItem from="1728288983047" duration="15688000" />
+      <workItem from="1728309241921" duration="3743000" />
     </task>
     <servers />
   </component>

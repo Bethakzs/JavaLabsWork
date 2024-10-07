@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dto.request.UserRegistration;
@@ -49,7 +50,7 @@ public class UserController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<?> updateUser(@RequestBody UserRegistration userRegistration, Principal principal) {
+	public ResponseEntity<?> updateUser(@Valid @RequestBody UserRegistration userRegistration, Principal principal) {
 		try {
 			logPrincipal(principal);
 			User user = userService.updateUser(principal.getName(), userRegistration);
