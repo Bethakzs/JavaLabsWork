@@ -7,15 +7,10 @@ import org.example.dto.request.JwtRequest;
 import org.example.dto.request.UserRegistration;
 import org.example.dto.response.JwtResponse;
 import org.example.entity.Role;
-import org.example.exception.BadRefreshTokenException;
-import org.example.exception.EmptyArgumentException;
-import org.example.exception.UserAlreadyExistException;
 import org.example.security.JwtTokenProvider;
 import org.example.service.AuthService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -25,42 +20,28 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("v1/api/auth")
+@PreAuthorize("permitAll()")
 public class AuthController {
 
 	private final AuthService authService;
 	private final JwtTokenProvider jwtTokenProvider;
 
-	@PreAuthorize("permitAll()")
 	@PostMapping("/login")
-	public ResponseEntity<?> createAuthToken(@Valid @RequestBody JwtRequest authRequest, HttpServletResponse response) {
-		try {
-			JwtResponse jwtResponse = authService.createAuthToken(authRequest);
-			return getMapResponseEntity(response, jwtResponse);
-		} catch (BadCredentialsException e) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-		}
+	public ResponseEntity<Map<String, Object>> createAuthToken(@Valid @RequestBody JwtRequest authRequest, HttpServletResponse response) {
+		JwtResponse jwtResponse = authService.createAuthToken(authRequest);
+		return getMapResponseEntity(response, jwtResponse);
 	}
 
-	@PreAuthorize("permitAll()")
 	@PostMapping("/registration")
-	public ResponseEntity<?> createNewUser(@Valid @RequestBody UserRegistration regRequest, HttpServletResponse response) {
-		try {
-			JwtResponse jwtResponse = authService.createNewUser(regRequest);
-			return getMapResponseEntity(response, jwtResponse);
-		} catch (UserAlreadyExistException e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-		}
+	public ResponseEntity<Map<String, Object>> createNewUser(@Valid @RequestBody UserRegistration regRequest, HttpServletResponse response) {
+		JwtResponse jwtResponse = authService.createNewUser(regRequest);
+		return getMapResponseEntity(response, jwtResponse);
 	}
 
-	@PreAuthorize("permitAll()")
 	@PostMapping("/refresh")
-	public ResponseEntity<?> refreshAuthToken(@CookieValue("jwt") String refreshToken, HttpServletResponse response) {
-		try {
-			JwtResponse jwtResponse = authService.refreshAuthToken(refreshToken);
-			return getMapResponseEntity(response, jwtResponse);
-		} catch (BadRefreshTokenException e) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-		}
+	public ResponseEntity<Map<String, Object>> refreshAuthToken(@CookieValue("jwt") String refreshToken, HttpServletResponse response) {
+		JwtResponse jwtResponse = authService.refreshAuthToken(refreshToken);
+		return getMapResponseEntity(response, jwtResponse);
 	}
 
 	private ResponseEntity<Map<String, Object>> getMapResponseEntity(HttpServletResponse response, JwtResponse jwtResponse) {
@@ -80,15 +61,10 @@ public class AuthController {
 		return responseBody;
 	}
 
-	@PreAuthorize("permitAll()")
 	@PostMapping("/logout")
-	public ResponseEntity<?> userLogout(@CookieValue("jwt") String refreshToken, HttpServletResponse response) {
-		try {
-			authService.logoutUser(refreshToken);
-			response.setHeader("Set-Cookie", "jwt=; HttpOnly; SameSite=None; Secure; Max-age=0");
-			return ResponseEntity.noContent().build();
-		} catch (EmptyArgumentException e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Void> userLogout(@CookieValue("jwt") String refreshToken, HttpServletResponse response) {
+		authService.logoutUser(refreshToken);
+		response.setHeader("Set-Cookie", "jwt=; HttpOnly; SameSite=None; Secure; Max-age=0");
+		return ResponseEntity.noContent().build();
 	}
 }
