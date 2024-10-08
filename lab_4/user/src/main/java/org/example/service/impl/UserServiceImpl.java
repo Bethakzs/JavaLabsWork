@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dao.UserRepository;
 import org.example.dto.request.UserRegistration;
+import org.example.dto.response.UserDTO;
 import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.exception.EmptyArgumentException;
@@ -12,6 +13,7 @@ import org.example.exception.UserNotFoundException;
 import org.example.service.UserService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final KafkaTemplate<String, UserDTO> kafkaTemplate;
+
+	private static final String USER_REGISTRATION_TOPIC = "user-registration-topic";
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -58,9 +63,23 @@ public class UserServiceImpl implements UserService {
 				.balance(BigDecimal.ZERO)
 				.roles(new HashSet<>(Collections.singletonList(Role.ROLE_USER)))
 				.build();
+		User savedUser = userRepository.save(user);
 
-		//TODO: make confirm email that user is registered
-		return userRepository.save(user);
+		UserDTO userDTO = convertToUserDTO(savedUser);
+		kafkaTemplate.send(USER_REGISTRATION_TOPIC, userDTO);
+		log.info("User registered and message sent to Kafka: {} with topic {}",
+				savedUser.getEmail(), USER_REGISTRATION_TOPIC);
+		return savedUser;
+	}
+
+	private UserDTO convertToUserDTO(User user) {
+		return UserDTO.builder()
+				.id(user.getId())
+				.firstName(user.getFirstName())
+				.lastName(user.getLastName())
+				.email(user.getEmail())
+				.balance(user.getBalance())
+				.build();
 	}
 
 	@Override

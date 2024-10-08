@@ -6,9 +6,9 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-public class WorkClass {
+public class UserWorkClass {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WorkClass.class, args);
+		SpringApplication.run(UserWorkClass.class, args);
 	}
 }

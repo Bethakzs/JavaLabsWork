@@ -12,9 +12,10 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
+#      ddl-auto: validate
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:db/migration/changelog-main.yaml
 
 jwt:
