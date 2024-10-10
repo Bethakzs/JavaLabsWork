@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WorkClass {
+public class BookingWorkClass {
     public static void main(String[] args) {
-        SpringApplication.run(WorkClass.class, args);
+        SpringApplication.run(BookingWorkClass.class, args);
     }
 }

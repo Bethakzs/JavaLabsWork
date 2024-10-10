@@ -8,9 +8,9 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class BadRefreshTokenException extends RuntimeException {
-	private int status;
-	private String message;
-	private Date timestamp;
+	private final int status;
+	private final String message;
+	private final Date timestamp;
 
 	public BadRefreshTokenException(int status, String message) {
 		this.status = status;

@@ -1,21 +1,22 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/university
+    url: jdbc:postgresql://localhost:5432/user
     username: postgres
     password: 12345
     driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: create-drop
-#      ddl-auto: validate
+#      ddl-auto: create-drop
+      ddl-auto: validate
   liquibase:
-    enabled: false
+    enabled: true
+#    enabled: false
     change-log: classpath:db/migration/changelog-main.yaml
 
 jwt:

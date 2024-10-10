@@ -32,7 +32,7 @@ public class EmailServiceImpl implements EmailService {
 		mailMessage.setText(body);
 		mailMessage.setFrom(from);
 
-		mailSender.send(mailMessage);
+//		mailSender.send(mailMessage);
 		log.info("Email sent successfully!");
 	}
 

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.request.JwtRequest;
 import org.example.dto.request.UserRegistration;
 import org.example.dto.response.JwtResponse;
+import org.example.entity.Role;
 import org.example.entity.User;
 import org.example.exception.BadRefreshTokenException;
 import org.example.exception.EmptyArgumentException;
@@ -22,6 +23,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
+	private static final String INVALID_REFRESH_TOKEN = "Invalid refreshToken";
+
 	private final JwtTokenProvider jwtTokenProvider;
 	private final AuthenticationManager authenticationManager;
 	private final UserService userService;
@@ -35,24 +38,32 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	@Transactional
-	public JwtResponse createNewUser(UserRegistration registrationDTO) {
+	public JwtResponse createNewUser(UserRegistration registrationDTO, Role role) {
 		if (!userService.isAvailableUser(registrationDTO)) {
 			throw new UserAlreadyExistException(HttpStatus.CONFLICT.value(), "User with this credentials already exists");
 		}
 
-		User user = userService.createUser(registrationDTO);
+		User user = userService.createUser(registrationDTO, role);
 		return getJwtResponse(user);
 	}
 
 	@Transactional
 	public JwtResponse refreshAuthToken(String refreshToken) {
 		User user = userService.findByRefreshToken(refreshToken).orElseThrow(() ->
-				new BadRefreshTokenException(HttpStatus.UNAUTHORIZED.value(), "Invalid refreshToken"));
+				new BadRefreshTokenException(HttpStatus.UNAUTHORIZED.value(), INVALID_REFRESH_TOKEN));
 		if (!jwtTokenProvider.validateToken(refreshToken, user.getEmail())) {
-			throw new BadRefreshTokenException(HttpStatus.UNAUTHORIZED.value(), "Invalid refreshToken");
+			throw new BadRefreshTokenException(HttpStatus.UNAUTHORIZED.value(), INVALID_REFRESH_TOKEN);
 		}
 
 		return getJwtResponse(user);
+	}
+
+	@Transactional
+	public void logoutUser(String refreshToken) {
+		User user = userService.findByRefreshToken(refreshToken).orElseThrow(() ->
+				new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), INVALID_REFRESH_TOKEN));
+		user.setRefreshToken("");
+		userService.updateUser(user);
 	}
 
 	private JwtResponse getJwtResponse(User user) {
@@ -62,13 +73,5 @@ public class AuthServiceImpl implements AuthService {
 		user.setRefreshToken(refreshToken);
 		userService.updateUser(user);
 		return new JwtResponse(accessToken, refreshToken, user.getRoles());
-	}
-
-	@Transactional
-	public void logoutUser(String refreshToken) {
-		User user = userService.findByRefreshToken(refreshToken).orElseThrow(() ->
-				new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), "Invalid refreshToken"));
-		user.setRefreshToken("");
-		userService.updateUser(user);
 	}
 }
