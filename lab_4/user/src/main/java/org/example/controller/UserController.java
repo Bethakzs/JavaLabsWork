@@ -15,7 +15,6 @@ import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
-@RolesAllowed({"USER", "ADMIN", "EDITOR"})
 @RequestMapping("v1/api/users")
 @Slf4j
 public class UserController {
@@ -47,7 +46,7 @@ public class UserController {
 		return ResponseEntity.ok(userDTO);
 	}
 
-	private UserDTO mapUserToUserDTO(User user) {
+	private static UserDTO mapUserToUserDTO(User user) {
 		return UserDTO.builder()
 				.id(user.getId())
 				.email(user.getEmail())
@@ -57,11 +56,11 @@ public class UserController {
 				.build();
 	}
 
-	private void logPrincipal(Principal principal) {
+	private static void logPrincipal(Principal principal) {
 		log.info("User principal data: {}", principal.getName());
 	}
 
-	private void logUserDTO(UserDTO user) {
+	private static void logUserDTO(UserDTO user) {
 		log.info("User data: {}", user);
 	}
 }

@@ -34,16 +34,17 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
+	private static final String USER_NOT_FOUND = "User not found";
+	private static final String USER_REGISTRATION_TOPIC = "user-registration-topic";
+
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
 	private final KafkaTemplate<String, UserDTO> kafkaTemplate;
 
-	private static final String USER_REGISTRATION_TOPIC = "user-registration-topic";
-
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(email)
-				.orElseThrow(() -> new UserNotFoundException(HttpStatus.UNAUTHORIZED.value(), "User not found"));
+				.orElseThrow(() -> new UserNotFoundException(HttpStatus.UNAUTHORIZED.value(), USER_NOT_FOUND));
 
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.name()))
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User createUser(UserRegistration userRegistration) {
+	public User createUser(UserRegistration userRegistration, Role role) {
 		User user = User.builder()
 				.firstName(userRegistration.getFirstName())
 				.lastName(userRegistration.getLastName())
@@ -61,7 +62,7 @@ public class UserServiceImpl implements UserService {
 				.phoneNumber(userRegistration.getPhoneNumber())
 				.password(passwordEncoder.encode(userRegistration.getPassword()))
 				.balance(BigDecimal.ZERO)
-				.roles(new HashSet<>(Collections.singletonList(Role.ROLE_USER)))
+				.roles(new HashSet<>(Collections.singletonList(role)))
 				.build();
 		User savedUser = userRepository.save(user);
 
@@ -72,16 +73,6 @@ public class UserServiceImpl implements UserService {
 		return savedUser;
 	}
 
-	private UserDTO convertToUserDTO(User user) {
-		return UserDTO.builder()
-				.id(user.getId())
-				.firstName(user.getFirstName())
-				.lastName(user.getLastName())
-				.email(user.getEmail())
-				.balance(user.getBalance())
-				.build();
-	}
-
 	@Override
 	public void updateUser(User user) {
 		userRepository.save(user);
@@ -90,7 +81,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateUser(String email, UserRegistration userDTO) {
 		User user = userRepository.findByEmail(email)
-				.orElseThrow(() -> new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), "User not found"));
+				.orElseThrow(() -> new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), USER_NOT_FOUND));
 
 		updateField(userDTO.getFirstName(), user::setFirstName);
 		updateField(userDTO.getLastName(), user::setLastName);
@@ -102,6 +93,51 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return userRepository.save(user);
+	}
+
+	@Override
+	public void deleteUser(String name) {
+		User user = userRepository.findByEmail(name)
+				.orElseThrow(() -> new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), USER_NOT_FOUND));
+		userRepository.delete(user);
+	}
+
+	@Override
+	@Cacheable("users")
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email)
+				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
+	}
+
+	@Override
+	public Optional<User> findByRefreshToken(String refreshToken) {
+		return userRepository.findByRefreshToken(refreshToken);
+	}
+
+	@Override
+	public boolean isAvailableUser(UserRegistration registrationDTO) {
+		return userRepository.findByEmail(registrationDTO.getEmail()).isEmpty()
+				&& userRepository.findByPhoneNumber(registrationDTO.getPhoneNumber()).isEmpty();
+	}
+
+	@Override
+	public boolean existsByEmail(String email) {
+		return userRepository.existsByEmail(email);
+	}
+
+	@Override
+	public boolean existsByPhoneNumber(String phoneNumber) {
+		return userRepository.existsByPhoneNumber(phoneNumber);
+	}
+
+	private static UserDTO convertToUserDTO(User user) {
+		return UserDTO.builder()
+				.id(user.getId())
+				.firstName(user.getFirstName())
+				.lastName(user.getLastName())
+				.email(user.getEmail())
+				.balance(user.getBalance())
+				.build();
 	}
 
 	private <T> void updateField(T newValue, Consumer<T> setter) {
@@ -126,40 +162,5 @@ public class UserServiceImpl implements UserService {
 			}
 			user.setPhoneNumber(newPhoneNumber);
 		}
-	}
-
-	@Override
-	public void deleteUser(String name) {
-		User user = userRepository.findByEmail(name)
-				.orElseThrow(() -> new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), "User not found"));
-		userRepository.delete(user);
-	}
-
-	@Override
-	@Cacheable("users")
-	public User findByEmail(String email) {
-		return userRepository.findByEmail(email)
-				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-	}
-
-	@Override
-	public Optional<User> findByRefreshToken(String refreshToken) {
-		return userRepository.findByRefreshToken(refreshToken);
-	}
-
-	@Override
-	public boolean isAvailableUser(UserRegistration registrationDTO) {
-		return userRepository.findByEmail(registrationDTO.getEmail()).isEmpty()
-				&& userRepository.findByPhoneNumber(registrationDTO.getPhoneNumber()).isEmpty();
-	}
-
-	@Override
-	public boolean existsByEmail(String email) {
-		return userRepository.existsByEmail(email);
-	}
-
-	@Override
-	public boolean existsByPhoneNumber(String phoneNumber) {
-		return userRepository.existsByPhoneNumber(phoneNumber);
 	}
 }

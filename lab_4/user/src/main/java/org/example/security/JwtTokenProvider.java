@@ -43,8 +43,9 @@ public class JwtTokenProvider {
 	}
 
 	public List<Role> getRoles(String token) {
-		List<String> roleStrings = getAllClaimsFromToken(token).get("roles", List.class);
-		return roleStrings.stream().map(Role::valueOf).collect(Collectors.toList());
+		@SuppressWarnings("unchecked")
+		List<String> roleStrings = (List<String>) getAllClaimsFromToken(token).get("roles");
+		return roleStrings != null ? roleStrings.stream().map(Role::valueOf).toList() : Collections.emptyList();
 	}
 
 	private Boolean isTokenExpired(String token) {
