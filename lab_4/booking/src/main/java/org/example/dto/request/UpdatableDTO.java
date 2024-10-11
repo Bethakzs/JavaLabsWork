@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface UpdatableDTO {
 	String getName();
+
 	BigDecimal getPrice();
+
 	Type getType();
+
 	List<Long> getAmenityIds();
 }
 

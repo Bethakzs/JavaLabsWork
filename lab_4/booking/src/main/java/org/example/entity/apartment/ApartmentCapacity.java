@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.example.dto.request.UpdatableCapacityDTO;
+import org.example.dto.request.UpdatableDTO;
 import org.example.entity.amenity.Amenity;
 import org.example.util.UpdaterField;
 
@@ -26,6 +27,10 @@ public abstract class ApartmentCapacity extends Apartment {
 	protected ApartmentCapacity(String name, BigDecimal price, Type type, List<Amenity> amenities, int maxSpace) {
 		super(name, price, type, amenities);
 		this.maxSpace = maxSpace;
+		calculateSpaceFromAmenities(amenities);
+	}
+
+	private void calculateSpaceFromAmenities(List<Amenity> amenities) {
 		this.childrenMaxSpace = 0;
 		this.animalMaxSpace = 0;
 
@@ -41,8 +46,14 @@ public abstract class ApartmentCapacity extends Apartment {
 		}
 	}
 
-	public <T extends UpdatableCapacityDTO> void updateFields(T requestDTO, UpdaterField updaterField, List<Amenity> amenities) {
+	@Override
+	public <T extends UpdatableDTO> void updateFields(T requestDTO, UpdaterField updaterField, List<Amenity> amenities) {
 		super.updateFields(requestDTO, updaterField, amenities);
-		updaterField.updateField(requestDTO.getMaxSpace(), this::setMaxSpace);
+		// Child class methods named for parent class methods should be overridden.
+		// That it will be overridden we need to use the same method signature.
+		if (requestDTO instanceof UpdatableCapacityDTO capacityDTO) {
+			updaterField.updateField(capacityDTO.getMaxSpace(), this::setMaxSpace);
+		}
+		calculateSpaceFromAmenities(amenities);
 	}
 }

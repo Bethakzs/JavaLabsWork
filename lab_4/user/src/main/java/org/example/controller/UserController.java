@@ -23,7 +23,6 @@ public class UserController {
 
 	@GetMapping("/get")
 	public ResponseEntity<UserDTO> getUser(Principal principal) {
-		logPrincipal(principal);
 		User user = userService.findByEmail(principal.getName());
 		UserDTO userDTO = mapUserToUserDTO(user);
 		logUserDTO(userDTO);
@@ -32,14 +31,13 @@ public class UserController {
 
 	@DeleteMapping("/delete")
 	public ResponseEntity<Void> deleteUser(Principal principal) {
-		logPrincipal(principal);
 		userService.deleteUser(principal.getName());
+		log.info("User with email {} was deleted.", principal.getName());
 		return ResponseEntity.noContent().build();
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody UserRegistration userRegistration, Principal principal) {
-		logPrincipal(principal);
 		User user = userService.updateUser(principal.getName(), userRegistration);
 		UserDTO userDTO = mapUserToUserDTO(user);
 		logUserDTO(userDTO);
@@ -54,10 +52,6 @@ public class UserController {
 				.lastName(user.getLastName())
 				.balance(user.getBalance())
 				.build();
-	}
-
-	private static void logPrincipal(Principal principal) {
-		log.info("User principal data: {}", principal.getName());
 	}
 
 	private static void logUserDTO(UserDTO user) {

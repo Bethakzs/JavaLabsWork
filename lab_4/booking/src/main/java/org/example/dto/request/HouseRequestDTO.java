@@ -1,6 +1,5 @@
 package org.example.dto.request;
 
-
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,7 +26,6 @@ public class HouseRequestDTO implements UpdatableCapacityDTO {
 	@NotNull(message = "Amenities cannot be null")
 	@Size(min = 1, message = "At least one amenity must be provided")
 	private List<Long> amenityIds;
-
 
 	@Min(value = 1, message = "Max space must be at least 1")
 	private int maxSpace;

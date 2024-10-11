@@ -11,7 +11,6 @@ import org.example.entity.User;
 import org.example.exception.EmptyArgumentException;
 import org.example.exception.UserNotFoundException;
 import org.example.service.UserService;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.GrantedAuthority;
@@ -103,7 +102,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	@Cacheable("users")
 	public User findByEmail(String email) {
 		return userRepository.findByEmail(email)
 				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));

@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET}
+  accessToken:
+    lifetime: 1h
+  refreshToken:
+    lifetime: 1d
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    allow-bean-definition-overriding: true
