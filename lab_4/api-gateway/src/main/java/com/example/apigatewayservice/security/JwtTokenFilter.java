@@ -57,7 +57,4 @@ public class JwtTokenFilter implements WebFilter {
 			return chain.filter(exchange);
 		}
 	}
-
 }
-
-
