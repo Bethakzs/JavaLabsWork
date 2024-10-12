@@ -18,7 +18,7 @@ public class EmailKafkaListener {
 	private final ObjectMapper objectMapper;
 	private final EmailService emailService;
 
-	@KafkaListener(topics = "user-registration-topic", groupId = "user-group")
+	@KafkaListener(topics = "email-registration-topic", groupId = "email-group")
 	public void listenToUserRegistration(@Payload String userJson) {
 		log.info("Received user registration message: {}", userJson);
 		try {

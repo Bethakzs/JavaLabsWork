@@ -32,15 +32,16 @@ public class SecurityConfig {
 				.csrf(ServerHttpSecurity.CsrfSpec::disable)
 				.authorizeExchange(exchanges -> exchanges
 						.pathMatchers("/v1/api/auth/**").permitAll()
-						.pathMatchers("/v1/api/users/**").hasAnyRole("USER", "EDITOR", "ADMIN")
 						.pathMatchers(
-								"/v1/api/booking/house/update/**",
-								"/v1/api/booking/house/delete/**",
-								"/v1/api/booking/hotel/update/**",
-								"/v1/api/booking/hotel/delete/**",
-								"/v1/api/booking/hotel/room/update/**",
-								"/v1/api/booking/hotel/room/delete/**"
+								"/v1/api/apartment/house/update/**",
+								"/v1/api/apartment/house/delete/**",
+								"/v1/api/apartment/hotel/update/**",
+								"/v1/api/apartment/hotel/delete/**",
+								"/v1/api/apartment/hotel/room/update/**",
+								"/v1/api/apartment/hotel/room/delete/**"
 						).hasAnyRole("EDITOR", "ADMIN")
+						.pathMatchers("/v1/api/users/**").hasAnyRole("USER", "EDITOR", "ADMIN")
+						.pathMatchers("/v1/api/apartment/**").hasAnyRole("USER", "EDITOR", "ADMIN")
 						.pathMatchers("/v1/api/booking/**").hasAnyRole("USER", "EDITOR", "ADMIN")
 				)
 				.securityContextRepository(NoOpServerSecurityContextRepository.getInstance())

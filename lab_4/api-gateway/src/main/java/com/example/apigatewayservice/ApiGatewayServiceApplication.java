@@ -20,6 +20,8 @@ public class ApiGatewayServiceApplication {
 						.uri("http://localhost:8081"))
 				.route("booking", r -> r.path("/v1/api/booking/**")
 						.uri("http://localhost:8082"))
+				.route("apartment", r -> r.path("/v1/api/apartment/**")
+						.uri("http://localhost:8082"))
 				.build();
 	}
 

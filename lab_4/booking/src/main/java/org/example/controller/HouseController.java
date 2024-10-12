@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("v1/api/booking/house")
+@RequestMapping("v1/api/apartment/house")
 @Slf4j
 public class HouseController {
 
