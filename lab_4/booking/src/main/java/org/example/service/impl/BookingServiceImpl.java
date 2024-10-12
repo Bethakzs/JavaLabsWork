@@ -1,14 +1,20 @@
-package org.example.entity.booking;
+package org.example.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.dao.BookingRepository;
+import org.example.dao.UserDTORepository;
 import org.example.entity.apartment.Apartment;
-import org.example.entity.booking.exception.ApartmentUnavailableForDateRangeException;
-import org.example.entity.booking.exception.UserNotFoundException;
-import org.example.service.HouseService;
+import org.example.entity.booking.Booking;
+import org.example.entity.booking.UserDTO;
+import org.example.exception.ApartmentUnavailableForDateRangeException;
+import org.example.exception.UserNotFoundException;
+import org.example.kafka.KafkaConsumerService;
+import org.example.service.ApartmentService;
+import org.example.service.BookingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import jakarta.transaction.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,11 +23,11 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class BookingService {
+public class BookingServiceImpl implements BookingService {
 
 	private final BookingRepository bookingRepository;
 	private final UserDTORepository userDTORepository;
-	private final HouseService apartmentService;
+	private final ApartmentService apartmentService;
 	private final KafkaConsumerService kafkaConsumerService;
 
 	public Booking bookApartment(String email, Long apartmentId, LocalDate startDate, LocalDate endDate) {
@@ -36,7 +42,7 @@ public class BookingService {
 			}
 		});
 
-		Apartment apartment = apartmentService.findHouseById(apartmentId);
+		Apartment apartment = apartmentService.findApartmentById(apartmentId);
 		if (isApartmentAlreadyBookedInThisRange(apartment, startDate, endDate)) {
 			throw new ApartmentUnavailableForDateRangeException(HttpStatus.BAD_REQUEST.value(),
 					"Apartment is already booked in the given date range");

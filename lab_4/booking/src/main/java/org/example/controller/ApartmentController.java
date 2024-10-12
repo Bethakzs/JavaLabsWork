@@ -1,10 +1,10 @@
-package org.example.entity.booking;
+package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.entity.amenity.AmenityType;
 import org.example.entity.apartment.Apartment;
-import org.example.entity.apartment.House;
 import org.example.entity.apartment.Type;
+import org.example.service.ApartmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +15,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ApartmentController {
 
-	private final ApartmentServiceImpl apartmentService;
+	private final ApartmentService apartmentService;
 
 	@GetMapping("/search")
-	public ResponseEntity<List<House>> searchApartments(
+	public ResponseEntity<List<Apartment>> searchApartments(
 			@RequestParam(required = false) AmenityType amenityType,
 			@RequestParam(required = false) Type type) {
-		List<House> apartments = apartmentService.searchApartment(amenityType, type);
+		List<Apartment> apartments = apartmentService.searchApartment(amenityType, type);
 		if (apartments.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}

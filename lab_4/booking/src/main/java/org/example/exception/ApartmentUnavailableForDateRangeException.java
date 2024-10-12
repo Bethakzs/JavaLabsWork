@@ -1,4 +1,4 @@
-package org.example.entity.booking.exception;
+package org.example.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

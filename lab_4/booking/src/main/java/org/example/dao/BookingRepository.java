@@ -1,6 +1,7 @@
-package org.example.entity.booking;
+package org.example.dao;
 
 import org.example.entity.apartment.Apartment;
+import org.example.entity.booking.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

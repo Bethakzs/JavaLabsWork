@@ -1,14 +1,14 @@
-package org.example.entity.booking;
+package org.example.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.example.dao.HouseRepository;
 import org.example.entity.amenity.AmenityType;
 import org.example.entity.apartment.Apartment;
-import org.example.entity.apartment.House;
 import org.example.entity.apartment.Type;
-import org.example.entity.booking.exception.ApartmentNotFoundException;
+import org.example.dao.ApartmentRepository;
+import org.example.service.ApartmentService;
+import org.example.entity.booking.Booking;
+import org.example.dao.BookingRepository;
+import org.example.exception.ApartmentNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +17,14 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ApartmentServiceImpl {
+public class ApartmentServiceImpl implements ApartmentService {
 	private static final double TAX = 0.30; // Include all taxes in our logic
 
-	private final HouseRepository apartmentRepository;
+	private final ApartmentRepository apartmentRepository;
 	private final BookingRepository bookingRepository;
 
-	public List<House> searchApartment(AmenityType amenityType, Type type) {
+	@Override
+	public List<Apartment> searchApartment(AmenityType amenityType, Type type) {
 		return apartmentRepository.findAll().stream()
 				.filter(apartment ->
 						(amenityType == null || hasAmenity(apartment, amenityType)) &&
@@ -41,6 +42,7 @@ public class ApartmentServiceImpl {
 		return apartment.getType().equals(type);
 	}
 
+	@Override
 	public String getStatistics(Long id) {
 		Apartment apartment = apartmentRepository.findById(id).orElseThrow(
 				() -> new ApartmentNotFoundException(HttpStatus.NOT_FOUND.value(), "Apartment not found"));
@@ -51,6 +53,12 @@ public class ApartmentServiceImpl {
 
 		return String.format("Total Income: %.2f, Total Cost: %.2f, Total Profit: %.2f",
 				totalIncome, totalCost, totalProfit);
+	}
+
+	@Override
+	public Apartment findApartmentById(Long apartmentId) {
+		return apartmentRepository.findById(apartmentId).orElseThrow(
+				() -> new ApartmentNotFoundException(HttpStatus.NOT_FOUND.value(), "Apartment not found"));
 	}
 
 	private BigDecimal calculateTotalIncome(Apartment apartment) {

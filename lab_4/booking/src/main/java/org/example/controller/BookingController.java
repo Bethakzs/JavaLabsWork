@@ -1,11 +1,11 @@
-package org.example.entity.booking;
+package org.example.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.entity.apartment.Apartment;
-import org.example.entity.booking.exception.ApartmentUnavailableForDateRangeException;
-import org.example.entity.booking.exception.KafkaTimeoutException;
-import org.example.entity.booking.exception.UserNotFoundException;
+import org.example.entity.booking.Booking;
+import org.example.dto.request.BookingRequestDTO;
+import org.example.service.impl.BookingServiceImpl;
 import org.example.service.HouseService;
 import org.example.util.JwtTokenProvider;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +19,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingController {
 
-	private final BookingService bookingService;
+	private final BookingServiceImpl bookingServiceImpl;
 	private final HouseService apartmentService;
 	private final JwtTokenProvider jwtTokenProvider;
 
 	@PostMapping("/book")
 	public ResponseEntity<Booking> bookApartment(@Valid @RequestBody BookingRequestDTO bookingRequest,
 												 @RequestHeader("Authorization") String authHeader) {
-		Booking booking = bookingService.bookApartment(
+		Booking booking = bookingServiceImpl.bookApartment(
 				parseAuthorizationHeader(authHeader),
 				bookingRequest.getApartmentId(),
 				bookingRequest.getStartDate(),
@@ -37,14 +37,14 @@ public class BookingController {
 	@GetMapping("/availability/{apartmentId}/{date}")
 	public ResponseEntity<Boolean> isDateAvailable(@PathVariable Long apartmentId, @PathVariable LocalDate date) {
 		Apartment apartment = apartmentService.findHouseById(apartmentId);
-		boolean available = bookingService.isDateAvailable(apartment, date);
+		boolean available = bookingServiceImpl.isDateAvailable(apartment, date);
 		return ResponseEntity.ok(available);
 	}
 
 	@GetMapping("/history/{apartmentId}")
 	public ResponseEntity<List<Booking>> getBookingHistory(@PathVariable Long apartmentId) {
 		Apartment apartment = apartmentService.findHouseById(apartmentId);
-		List<Booking> bookingHistory = bookingService.getBookingHistoryForApartment(apartment);
+		List<Booking> bookingHistory = bookingServiceImpl.getBookingHistoryForApartment(apartment);
 		if (bookingHistory.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}

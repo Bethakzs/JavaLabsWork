@@ -1,5 +1,6 @@
-package org.example.entity.booking;
+package org.example.dao;
 
+import org.example.entity.booking.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

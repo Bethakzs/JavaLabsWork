@@ -1,9 +1,10 @@
-package org.example.entity.booking;
+package org.example.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.entity.booking.exception.KafkaTimeoutException;
+import org.example.entity.booking.UserDTO;
+import org.example.exception.KafkaTimeoutException;
 import org.springframework.http.HttpStatus;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;

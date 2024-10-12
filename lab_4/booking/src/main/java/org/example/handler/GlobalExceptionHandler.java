@@ -1,16 +1,15 @@
 package org.example.handler;
 
-import org.example.entity.booking.exception.ApartmentNotFoundException;
-import org.example.entity.booking.exception.ApartmentUnavailableForDateRangeException;
-import org.example.entity.booking.exception.KafkaTimeoutException;
-import org.example.entity.booking.exception.UserNotFoundException;
+import org.example.exception.ApartmentNotFoundException;
+import org.example.exception.ApartmentUnavailableForDateRangeException;
+import org.example.exception.KafkaTimeoutException;
+import org.example.exception.UserNotFoundException;
 import org.example.exception.AmenityNotExistException;
 import org.example.exception.HotelNotFoundException;
 import org.example.exception.HouseNotFoundException;
 import org.example.exception.RoomNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.support.MethodArgumentTypeMismatchException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

@@ -1,4 +1,4 @@
-package org.example.entity.booking;
+package org.example.dto.request;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
