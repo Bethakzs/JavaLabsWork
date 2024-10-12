@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("v1/api/booking/amenity")
+@RequestMapping("v1/api/apartment/amenity")
 @Slf4j
 public class AmenityController {
 

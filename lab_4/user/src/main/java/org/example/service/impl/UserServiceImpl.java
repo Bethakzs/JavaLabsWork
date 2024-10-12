@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
 	private static final String USER_NOT_FOUND = "User not found";
-	private static final String USER_REGISTRATION_TOPIC = "user-registration-topic";
+	private static final String USER_REGISTRATION_TOPIC = "email-registration-topic";
 
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
@@ -126,6 +126,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean existsByPhoneNumber(String phoneNumber) {
 		return userRepository.existsByPhoneNumber(phoneNumber);
+	}
+
+	@Override
+	public User findById(Long userId) {
+		return userRepository.findById(userId)
+				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
 	}
 
 	private static UserDTO convertToUserDTO(User user) {
