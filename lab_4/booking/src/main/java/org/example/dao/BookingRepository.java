@@ -16,4 +16,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long>,
 	boolean existsByApartmentAndStartDateBetween(Apartment apartment, LocalDate startDate, LocalDate endDate);
 
 	List<Booking> findByApartment(Apartment apartment);
+
+	boolean existsByApartment(Apartment apartment);
 }

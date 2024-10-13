@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public enum Role {
-    ROLE_USER(2001),
-    ROLE_ADMIN(5320),
-    ROLE_EDITOR(1808);
-    private int value;
+	ROLE_USER(2001),
+	ROLE_ADMIN(5320),
+	ROLE_EDITOR(1808);
+	private int value;
 }

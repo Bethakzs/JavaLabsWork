@@ -1,14 +1,14 @@
 package org.example.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.dao.ApartmentRepository;
+import org.example.dao.BookingRepository;
 import org.example.entity.amenity.AmenityType;
 import org.example.entity.apartment.Apartment;
 import org.example.entity.apartment.Type;
-import org.example.dao.ApartmentRepository;
-import org.example.service.ApartmentService;
 import org.example.entity.booking.Booking;
-import org.example.dao.BookingRepository;
 import org.example.exception.ApartmentNotFoundException;
+import org.example.service.ApartmentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 

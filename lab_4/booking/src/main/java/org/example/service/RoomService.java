@@ -20,8 +20,8 @@ public interface RoomService {
 
 	void deleteRoomFromHotel(Long id);
 
-	Room updateRoomInHotel(Long id, RoomRequestDTO roomRequestDTO);
-
 	void deleteAllRooms(List<Room> rooms);
+
+	Room updateRoomInHotel(Long id, RoomRequestDTO roomRequestDTO);
 
 }

@@ -40,13 +40,21 @@ public class KafkaConsumerService {
 		try {
 			requestUserByEmail(email);
 			return userFuture.get(2, TimeUnit.SECONDS);
-		} catch (InterruptedException | ExecutionException | TimeoutException e) {
-			log.error("Error while waiting for Kafka response: {}", e.getMessage());
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			log.error("Thread was interrupted while waiting for Kafka response: {}", e.getMessage());
+			throw new KafkaTimeoutException(HttpStatus.REQUEST_TIMEOUT.value(), "Kafka response interrupted");
+		} catch (ExecutionException e) {
+			log.error("Error during execution while waiting for Kafka response: {}", e.getMessage());
+			throw new KafkaTimeoutException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error during Kafka execution");
+		} catch (TimeoutException e) {
+			log.error("Timeout while waiting for Kafka response: {}", e.getMessage());
 			throw new KafkaTimeoutException(HttpStatus.REQUEST_TIMEOUT.value(), "Kafka response timeout");
 		} finally {
 			userFuture = new CompletableFuture<>();
 		}
 	}
+
 
 	private void requestUserByEmail(String email) {
 		log.info("Requesting user with email: {}", email);
