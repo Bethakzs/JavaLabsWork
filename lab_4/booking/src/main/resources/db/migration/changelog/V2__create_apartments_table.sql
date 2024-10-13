@@ -6,18 +6,18 @@ CREATE TABLE apartments
     type  VARCHAR(50)    NOT NULL
 );
 
-CREATE TABLE hotels
-(
-    id BIGINT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES apartments (id) ON DELETE CASCADE
-);
-
 CREATE TABLE houses
 (
     id                 BIGINT PRIMARY KEY,
     max_space          INT NOT NULL,
     children_max_space INT NOT NULL DEFAULT 0,
     animal_max_space   INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (id) REFERENCES apartments (id) ON DELETE CASCADE
+);
+
+CREATE TABLE hotels
+(
+    id BIGINT PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES apartments (id) ON DELETE CASCADE
 );
 
@@ -40,6 +40,10 @@ CREATE TABLE hotels_rooms
     FOREIGN KEY (hotel_id) REFERENCES hotels (id) ON DELETE CASCADE,
     FOREIGN KEY (rooms_id) REFERENCES rooms (id) ON DELETE CASCADE
 );
+
+-- ALTER TABLE booking
+--     ADD CONSTRAINT booking_apartment_id_fkey FOREIGN KEY (apartment_id) REFERENCES apartments (id) ON DELETE CASCADE;
+
 
 CREATE TABLE apartment_amenities
 (

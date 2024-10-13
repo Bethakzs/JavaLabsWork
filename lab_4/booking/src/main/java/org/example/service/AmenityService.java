@@ -9,7 +9,5 @@ public interface AmenityService {
 
 	List<Amenity> getAllAmenities();
 
-	List<Amenity> findAllById(List<Long> amenityIds);
-
 	Optional<Amenity> findById(Long amenityId);
 }

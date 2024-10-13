@@ -7,6 +7,7 @@ import org.example.dao.HouseRepository;
 import org.example.dto.request.HouseRequestDTO;
 import org.example.entity.amenity.Amenity;
 import org.example.entity.apartment.House;
+import org.example.exception.ApartmentIsBookedException;
 import org.example.exception.HouseNotFoundException;
 import org.example.service.HouseService;
 import org.example.util.AmenityUtil;
@@ -39,7 +40,7 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	@Transactional
 	public House createHouse(HouseRequestDTO houseRequestDTO) {
-		List<Amenity> amenities = amenityUtil.findAllById(houseRequestDTO.getAmenityIds());
+		List<Amenity> amenities = amenityUtil.getAmenities(houseRequestDTO.getAmenityIds());
 		House house = new House(houseRequestDTO.getName(), houseRequestDTO.getPrice(),
 				houseRequestDTO.getType(), amenities, houseRequestDTO.getMaxSpace());
 		return houseRepository.save(house);
@@ -48,6 +49,11 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	public void deleteHouse(Long id) {
 		House house = findHouseById(id);
+
+		if (amenityUtil.existsByApartment(house)) {
+			throw new ApartmentIsBookedException(HttpStatus.BAD_REQUEST.value(), "Cannot delete house because it is linked to a booking.");
+		}
+
 		houseRepository.delete(house);
 	}
 

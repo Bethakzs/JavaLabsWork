@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dao.AmenityRepository;
 import org.example.entity.amenity.Amenity;
 import org.example.service.AmenityService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +17,9 @@ public class AmenityServiceImpl implements AmenityService {
 	private final AmenityRepository amenityRepository;
 
 	@Override
+	@Cacheable("amenities")
 	public List<Amenity> getAllAmenities() {
 		return amenityRepository.findAll();
-	}
-
-	@Override
-	public List<Amenity> findAllById(List<Long> amenityIds) {
-		return amenityRepository.findAllById(amenityIds);
 	}
 
 	@Override

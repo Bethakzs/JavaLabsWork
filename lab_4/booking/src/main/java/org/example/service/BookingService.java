@@ -16,5 +16,9 @@ public interface BookingService {
 	List<Booking> getBookingHistoryForApartment(Apartment apartment);
 
 	UserDTO getUserFromKafka(String email);
+
+	boolean existsByApartment(Apartment apartment);
+
+	void unBookApartment(Long bookingId);
 }
 

@@ -1,0 +1,1190 @@
+{
+	"info": {
+		"_postman_id": "b7615f30-fc9b-42f3-9732-cd10c8a9216d",
+		"name": "University",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29847127",
+		"_collection_link": "https://cloudy-station-167426.postman.co/workspace/University~1e730e02-772d-4546-9937-1f7eb57580e6/collection/29847127-b7615f30-fc9b-42f3-9732-cd10c8a9216d?action=share&source=collection_link&creator=29847127"
+	},
+	"item": [
+		{
+			"name": "Apartment",
+			"item": [
+				{
+					"name": "House",
+					"item": [
+						{
+							"name": "Get house",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/house/get/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"house",
+										"get",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all house",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/house/get/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"house",
+										"get",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create house",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Sunny Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"STANDARD\",\r\n  \"amenityIds\": [1, 2, 9, 10],\r\n  \"maxSpace\": 8\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/apartment/house/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"house",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete house",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI4ODQ2MDE4LCJpYXQiOjE3Mjg4NDI0MTh9.XLwQK93F25uo_-HFYlyhMT8vmvBycrXkOhDDX3IW2hI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/house/delete/11",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"house",
+										"delete",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update house",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Mooned Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"STANDARD\",\r\n  \"amenityIds\": [1, 2, 8, 10],\r\n  \"maxSpace\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/apartment/house/update/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"house",
+										"update",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hotel",
+					"item": [
+						{
+							"name": "Room",
+							"item": [
+								{
+									"name": "Get room by id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/apartment/hotel/room/get/14",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"apartment",
+												"hotel",
+												"room",
+												"get",
+												"14"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get all rooms by hotel id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/apartment/hotel/room/get/all/8",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"apartment",
+												"hotel",
+												"room",
+												"get",
+												"all",
+												"8"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get all rooms",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/apartment/hotel/room/get/all",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"apartment",
+												"hotel",
+												"room",
+												"get",
+												"all"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create room",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"hotelId\": 13,\r\n  \"name\": \"Sunny Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"ECONOMIC\",\r\n  \"amenityIds\": [8, 9],\r\n  \"maxSpace\": 8\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/apartment/hotel/room/create",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"apartment",
+												"hotel",
+												"room",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete room by id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/apartment/hotel/room/delete/5",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"apartment",
+												"hotel",
+												"room",
+												"delete",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update room by id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"hotelId\": 13,\r\n  \"name\": \"Mooned Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"STANDARD\",\r\n  \"amenityIds\": [1, 2, 8, 10],\r\n  \"maxSpace\": 6\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/apartment/hotel/room/update/14",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"apartment",
+												"hotel",
+												"room",
+												"update",
+												"14"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get hotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/hotel/get/8",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"hotel",
+										"get",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all hotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/hotel/get/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"hotel",
+										"get",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create hotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Mapped Hotel\",\r\n  \"price\": 900.0,\r\n  \"type\": \"STANDARD\",\r\n  \"amenityIds\": [3, 9, 11]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/apartment/hotel/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"hotel",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete hotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/hotel/delete/10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"hotel",
+										"delete",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update hotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Cocnot Hotel\",\r\n  \"price\": 6000.0,\r\n  \"type\": \"LUXURY\",\r\n  \"amenityIds\": [1, 2, 8, 10]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/apartment/hotel/update/10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"hotel",
+										"update",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all amenity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartment/amenity/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartment",
+								"amenity",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dou.duno@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Login editor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"doui.duno@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Registration user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"dou.duno@gmail.com\",\n  \"password\": \"password123\",\n  \"phoneNumber\": \"+1234567890\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/registration/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"registration",
+								"user"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Registration editor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"doui.duno@gmail.com\",\n  \"password\": \"password123\",\n  \"phoneNumber\": \"+11234567890\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/registration/editor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"registration",
+								"editor"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NzM3ODk4LCJpYXQiOjE3Mjg3MzQyOTh9.gLSyUrw7G2NMpcgYpV_bNoMFLW46SvQBLujsR5FnxtU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"apartmentId\": 3,\r\n  \"startDate\": \"2025-03-26\",\r\n  \"endDate\": \"2025-04-02\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/booking/book",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"booking",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODQ0NzA4LCJpYXQiOjE3Mjg4NDExMDh9.hxOvhOpFUDzpigvyIgOV4nstqxcK7nblL6UP8devz98",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"apartmentId\": 3,\r\n  \"startDate\": \"2025-03-26\",\r\n  \"endDate\": \"2025-04-02\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/booking/delete/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"booking",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check availability",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NzM3ODk4LCJpYXQiOjE3Mjg3MzQyOTh9.gLSyUrw7G2NMpcgYpV_bNoMFLW46SvQBLujsR5FnxtU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/booking/availability/3/2025-03-28",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"booking",
+								"availability",
+								"3",
+								"2025-03-28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get history of booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NzM3ODk4LCJpYXQiOjE3Mjg3MzQyOTh9.gLSyUrw7G2NMpcgYpV_bNoMFLW46SvQBLujsR5FnxtU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/booking/history/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"booking",
+								"history",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search apartment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NzM3ODk4LCJpYXQiOjE3Mjg3MzQyOTh9.gLSyUrw7G2NMpcgYpV_bNoMFLW46SvQBLujsR5FnxtU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartment/search?amenityType=WI_FI&type=LUXURВY",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartment",
+								"search"
+							],
+							"query": [
+								{
+									"key": "amenityType",
+									"value": "WI_FI"
+								},
+								{
+									"key": "type",
+									"value": "LUXURВY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get statistics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NzM3ODk4LCJpYXQiOjE3Mjg3MzQyOTh9.gLSyUrw7G2NMpcgYpV_bNoMFLW46SvQBLujsR5FnxtU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartment/statistics/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartment",
+								"statistics",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjgzMTAyMjMsImlhdCI6MTcyODMwNjYyM30.oY_XjujjeSPTgvAJd54Sn4nnDZOKE5YKibuvr6nuApg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/get",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"get"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "balance",
+								"value": "4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"delete"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Petro\",\r\n  \"lastName\": \"Nan\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"password\": \"password123\",\r\n  \"phoneNumber\": \"+1234567890\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

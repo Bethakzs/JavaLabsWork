@@ -1,13 +1,6 @@
 package org.example.handler;
 
-import org.example.exception.ApartmentNotFoundException;
-import org.example.exception.ApartmentUnavailableForDateRangeException;
-import org.example.exception.KafkaTimeoutException;
-import org.example.exception.UserNotFoundException;
-import org.example.exception.AmenityNotExistException;
-import org.example.exception.HotelNotFoundException;
-import org.example.exception.HouseNotFoundException;
-import org.example.exception.RoomNotFoundException;
+import org.example.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -53,6 +46,16 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(ApartmentNotFoundException.class)
 	public ResponseEntity<String> handleApartmentNotFound(ApartmentNotFoundException e) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+	}
+
+	@ExceptionHandler(ApartmentIsBookedException.class)
+	public ResponseEntity<String> handleApartmentIsBooked(ApartmentIsBookedException e) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+	}
+
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 	}
 
 	@ExceptionHandler(KafkaTimeoutException.class)

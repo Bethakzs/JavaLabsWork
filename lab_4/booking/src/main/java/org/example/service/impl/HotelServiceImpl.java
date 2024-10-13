@@ -43,7 +43,7 @@ public class HotelServiceImpl implements HotelService {
 	@Override
 	@Transactional
 	public Hotel createHotel(HotelRequestDTO hotelRequestDTO) {
-		List<Amenity> amenities = amenityUtil.findAllById(hotelRequestDTO.getAmenityIds());
+		List<Amenity> amenities = amenityUtil.getAmenities(hotelRequestDTO.getAmenityIds());
 		Hotel hotel = new Hotel(hotelRequestDTO.getName(), hotelRequestDTO.getPrice(), hotelRequestDTO.getType(), amenities, new ArrayList<>());
 		return hotelRepository.save(hotel);
 	}

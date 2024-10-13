@@ -2,9 +2,11 @@ package com.example.apigatewayservice.security;
 
 import com.example.apigatewayservice.dto.Role;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -52,9 +54,21 @@ public class JwtTokenFilter implements WebFilter {
 
 			return chain.filter(exchange).contextWrite(ReactiveSecurityContextHolder
 					.withSecurityContext(Mono.just(securityContext)));
+
 		} catch (ExpiredJwtException e) {
 			log.error("Token expired: {}", e.getMessage());
-			return chain.filter(exchange);
+			exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+			return exchange.getResponse().setComplete();
+
+		} catch (SignatureException e) {
+			log.error("Invalid JWT signature: {}", e.getMessage());
+			exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+			return exchange.getResponse().setComplete();
+
+		} catch (Exception e) {
+			log.error("Error processing JWT: {}", e.getMessage());
+			exchange.getResponse().setStatusCode(HttpStatus.BAD_REQUEST);
+			return exchange.getResponse().setComplete();
 		}
 	}
 }
