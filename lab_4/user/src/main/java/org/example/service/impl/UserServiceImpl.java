@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UserServiceImpl implements UserService {
+ public class UserServiceImpl implements UserService {
 
 	private static final String USER_NOT_FOUND = "User not found";
 	private static final String USER_REGISTRATION_TOPIC = "email-registration-topic";
@@ -132,6 +132,26 @@ public class UserServiceImpl implements UserService {
 	public User findById(Long userId) {
 		return userRepository.findById(userId)
 				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
+	}
+
+	@Override
+	public void withdrawBalance(String email, BigDecimal amount) {
+		User user = userRepository.findByEmail(email)
+				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
+
+		BigDecimal newBalance = user.getBalance().subtract(amount);
+		user.setBalance(newBalance);
+		userRepository.save(user);
+	}
+
+	@Override
+	public User depositBalance(String name, BigDecimal amount) {
+		User user = userRepository.findByEmail(name)
+				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
+
+		BigDecimal newBalance = user.getBalance().add(amount);
+		user.setBalance(newBalance);
+		return userRepository.save(user);
 	}
 
 	private static UserDTO convertToUserDTO(User user) {

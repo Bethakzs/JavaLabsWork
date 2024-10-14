@@ -27,7 +27,6 @@ public class RoomRequestDTO implements UpdatableCapacityDTO {
 	private Type type;
 
 	@NotNull(message = "Amenities cannot be null")
-	@Size(min = 1, message = "At least one amenity must be provided")
 	private List<Long> amenityIds;
 
 

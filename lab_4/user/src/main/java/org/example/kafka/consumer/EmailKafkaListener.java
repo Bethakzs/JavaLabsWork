@@ -11,6 +11,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -30,6 +32,20 @@ public class EmailKafkaListener {
 			log.info("Sent UserDTO to Kafka: {}", userDTO);
 		} catch (NumberFormatException | UserNotFoundException e) {
 			log.error("Error while processing user id message: {}", e.getMessage());
+		}
+	}
+
+	@KafkaListener(topics = "user-withdraw-balance-topic", groupId = "balance-group")
+	public void listenToBalanceWithdrawal(@Payload String message) {
+		log.info("Received balance withdrawal request: {}", message);
+		try {
+			String[] parts = message.split(",");
+			String email = parts[0];
+			BigDecimal amount = new BigDecimal(parts[1]);
+
+			userService.withdrawBalance(email, amount);
+		} catch (Exception e) {
+			log.error("Error processing balance withdrawal message: {}", e.getMessage());
 		}
 	}
 }

@@ -10,6 +10,7 @@ import org.example.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 
 @RestController
@@ -38,6 +39,14 @@ public class UserController {
 	@PutMapping("/update")
 	public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody UserRegistration userRegistration, Principal principal) {
 		User user = userService.updateUser(principal.getName(), userRegistration);
+		UserDTO userDTO = mapUserToUserDTO(user);
+		logUserDTO(userDTO);
+		return ResponseEntity.ok(userDTO);
+	}
+
+	@PostMapping("/deposit")
+	public ResponseEntity<UserDTO> depositBalanceToUser(@RequestParam BigDecimal amount, Principal principal) {
+		User user = userService.depositBalance(principal.getName(), amount);
 		UserDTO userDTO = mapUserToUserDTO(user);
 		logUserDTO(userDTO);
 		return ResponseEntity.ok(userDTO);

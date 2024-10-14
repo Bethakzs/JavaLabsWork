@@ -26,6 +26,5 @@ public class HotelRequestDTO implements UpdatableDTO {
 	private Type type;
 
 	@NotNull(message = "Amenities cannot be null")
-	@Size(min = 1, message = "At least one amenity must be provided")
 	private List<Long> amenityIds;
 }
