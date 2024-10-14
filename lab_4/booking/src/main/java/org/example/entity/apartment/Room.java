@@ -2,10 +2,7 @@ package org.example.entity.apartment;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.entity.amenity.Amenity;
 
 import java.math.BigDecimal;
@@ -22,6 +19,7 @@ public class Room extends ApartmentCapacity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "hotel_id")
 	@JsonIgnore
+	@ToString.Exclude
 	private Hotel hotel;
 
 	public Room(String name, BigDecimal price, Type type, List<Amenity> amenities, int maxSpace, Hotel hotel) {

@@ -21,9 +21,8 @@ public class Booking {
 	@Column(name = "id", insertable = false, updatable = false)
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private UserDTO userDTO;
+	@Transient
+	private UserDTO userId;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "apartment_id")
@@ -40,35 +39,17 @@ public class Booking {
 
 	private BigDecimal pricePerDay;
 
-	public Booking(UserDTO userDTO, Apartment apartment, LocalDate startDate, LocalDate endDate, BigDecimal pricePerDay) {
-		this.userDTO = userDTO;
+	public Booking(UserDTO userId, Apartment apartment, LocalDate startDate, LocalDate endDate, BigDecimal pricePerDay) {
+		this.userId = userId;
 		this.apartment = apartment;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.pricePerDay = pricePerDay;
 		this.days = getDays();
+		this.pricePerDay = pricePerDay;
 	}
 
 	public int getDays() {
 		return (int) (endDate.toEpochDay() - startDate.toEpochDay());
-	}
-
-	public BigDecimal getTotalPrice() {
-		BigDecimal totalCost = BigDecimal.ZERO;
-		LocalDate currentDay = startDate;
-
-		while (!currentDay.isAfter(endDate.minusDays(1))) {
-			BigDecimal dayCost = pricePerDay;
-
-			if (currentDay.getMonthValue() == 3 || currentDay.getMonthValue() == 11) {
-				dayCost = dayCost.multiply(BigDecimal.valueOf(0.8));
-			}
-
-			totalCost = totalCost.add(dayCost);
-			currentDay = currentDay.plusDays(1);
-		}
-
-		return totalCost;
 	}
 }
 

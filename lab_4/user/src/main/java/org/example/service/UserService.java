@@ -5,6 +5,7 @@ import org.example.entity.Role;
 import org.example.entity.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 public interface UserService extends UserDetailsService {
@@ -28,4 +29,8 @@ public interface UserService extends UserDetailsService {
 	boolean existsByPhoneNumber(String phoneNumber);
 
 	User findById(Long userId);
+
+	void withdrawBalance(String email, BigDecimal amount);
+
+	User depositBalance(String name, BigDecimal amount);
 }

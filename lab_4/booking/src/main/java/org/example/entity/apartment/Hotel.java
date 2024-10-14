@@ -2,10 +2,7 @@ package org.example.entity.apartment;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.entity.amenity.Amenity;
 
 import java.math.BigDecimal;
@@ -21,6 +18,7 @@ import java.util.List;
 public class Hotel extends Apartment {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ToString.Exclude
 	private List<Room> rooms;
 
 	public Hotel(String name, BigDecimal price, Type type, List<Amenity> amenities, List<Room> rooms) {

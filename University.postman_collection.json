@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "b7615f30-fc9b-42f3-9732-cd10c8a9216d",
+		"_postman_id": "9e41681f-585d-43c1-8bf3-ed58b870febc",
 		"name": "University",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29847127",
-		"_collection_link": "https://cloudy-station-167426.postman.co/workspace/University~1e730e02-772d-4546-9937-1f7eb57580e6/collection/29847127-b7615f30-fc9b-42f3-9732-cd10c8a9216d?action=share&source=collection_link&creator=29847127"
+		"_collection_link": "https://cloudy-station-167426.postman.co/workspace/University~1e730e02-772d-4546-9937-1f7eb57580e6/collection/29847127-9e41681f-585d-43c1-8bf3-ed58b870febc?action=share&source=collection_link&creator=29847127"
 	},
 	"item": [
 		{
@@ -850,7 +850,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NzM3ODk4LCJpYXQiOjE3Mjg3MzQyOTh9.gLSyUrw7G2NMpcgYpV_bNoMFLW46SvQBLujsR5FnxtU",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHNkYUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI4OTM1OTU2LCJpYXQiOjE3Mjg5MzIzNTZ9._98MvtjcE4gWj-x-DxGMm2QF9nPkudzK4rh0z5ozq2c",
 									"type": "string"
 								}
 							]
@@ -859,7 +859,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"apartmentId\": 3,\r\n  \"startDate\": \"2025-03-26\",\r\n  \"endDate\": \"2025-04-02\"\r\n}\r\n",
+							"raw": "{\r\n  \"apartmentId\": 5,\r\n  \"startDate\": \"2025-03-26\",\r\n  \"endDate\": \"2025-04-02\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1181,6 +1181,55 @@
 							]
 						},
 						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Deposit user balance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHNkYUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI4OTM1OTU2LCJpYXQiOjE3Mjg5MzIzNTZ9._98MvtjcE4gWj-x-DxGMm2QF9nPkudzK4rh0z5ozq2c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/deposit?amount=11600",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"deposit"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "11600"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
 				}

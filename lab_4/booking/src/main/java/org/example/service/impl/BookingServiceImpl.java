@@ -4,20 +4,22 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dao.BookingRepository;
-import org.example.dao.UserDTORepository;
 import org.example.entity.apartment.Apartment;
 import org.example.entity.apartment.Hotel;
 import org.example.entity.booking.Booking;
 import org.example.entity.booking.UserDTO;
 import org.example.exception.ApartmentNotFoundException;
 import org.example.exception.ApartmentUnavailableForDateRangeException;
+import org.example.exception.UserBalanceException;
 import org.example.exception.UserNotFoundException;
 import org.example.kafka.KafkaConsumerService;
 import org.example.service.ApartmentService;
 import org.example.service.BookingService;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -28,38 +30,57 @@ import java.util.List;
 public class BookingServiceImpl implements BookingService {
 
 	private final BookingRepository bookingRepository;
-	private final UserDTORepository userDTORepository;
 	private final ApartmentService apartmentService;
 	private final KafkaConsumerService kafkaConsumerService;
+	private final KafkaTemplate<String, String> kafkaTemplate;
 
 	@Override
 	public Booking bookApartment(String email, Long apartmentId, LocalDate startDate, LocalDate endDate) {
-		UserDTO user = userDTORepository.findByEmail(email).orElseGet(() -> {
-			UserDTO kafkaUser = getUserFromKafka(email);
-			if (kafkaUser != null) {
-				UserDTO userDTO = userDTORepository.save(kafkaUser);
-				log.info("User with email {} saved to the database", userDTO.getEmail());
-				return userDTO;
-			} else {
-				throw new UserNotFoundException(HttpStatus.NOT_FOUND.value(), "User with email " + email + " not found");
-			}
-		});
-
+		UserDTO user = findOrRetrieveUserByEmail(email);
 		Apartment apartment = apartmentService.findApartmentById(apartmentId);
-		if(apartment instanceof Hotel) {
+
+		if (apartment instanceof Hotel) {
 			throw new IllegalArgumentException("Cannot book a whole hotel");
 		}
+
 		if (isApartmentAlreadyBookedInThisRange(apartment, startDate, endDate)) {
 			throw new ApartmentUnavailableForDateRangeException(HttpStatus.BAD_REQUEST.value(),
 					"Apartment is already booked in the given date range");
 		}
 
+		BigDecimal totalPrice = apartmentService.getTotalPriceOfApartment(apartment, startDate, endDate);
+		if (user.getBalance().compareTo(totalPrice) < 0) {
+			log.error("User balance is not enough. Total cost: {} and user balance: {}", totalPrice, user.getBalance());
+			throw new UserBalanceException(HttpStatus.BAD_REQUEST.value(),
+					"User balance is not enough to book this apartment");
+		}
+
+		user.setBalance(user.getBalance().subtract(totalPrice));
 		Booking booking = new Booking(user, apartment, startDate, endDate, apartment.getPrice());
-		return bookingRepository.save(booking);
+		log.info("Saving booking {}", booking);
+		Booking savedBooking = bookingRepository.save(booking);
+
+		String message = user.getEmail() + "," + totalPrice;
+		kafkaTemplate.send("user-withdraw-balance-topic", message);
+		return savedBooking;
+	}
+
+	private UserDTO findOrRetrieveUserByEmail(String email) {
+		UserDTO kafkaUser = getUserFromKafka(email);
+		if (kafkaUser != null) {
+			log.info("User with email {}", kafkaUser.getEmail());
+			return kafkaUser;
+		} else {
+			throw new UserNotFoundException(HttpStatus.NOT_FOUND.value(), "User with email " + email + " not found");
+		}
 	}
 
 	private boolean isApartmentAlreadyBookedInThisRange(Apartment apartment, LocalDate startDate, LocalDate endDate) {
 		return bookingRepository.existsByApartmentAndStartDateBetween(apartment, startDate, endDate);
+	}
+
+	private UserDTO getUserFromKafka(String email) {
+		return kafkaConsumerService.getUserFromKafka(email);
 	}
 
 	@Override
@@ -77,11 +98,6 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public List<Booking> getBookingHistoryForApartment(Apartment apartment) {
 		return bookingRepository.findByApartment(apartment);
-	}
-
-	@Override
-	public UserDTO getUserFromKafka(String email) {
-		return kafkaConsumerService.getUserFromKafka(email);
 	}
 
 	@Override

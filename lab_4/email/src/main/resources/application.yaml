@@ -4,8 +4,8 @@ server:
 spring:
   name: email-service
   mail:
-    username: ${SPRING_MAIL_USERNAME}
-    password: ${SPRING_MAIL_PASSWORD}
+    username: boxride228@gmail.com
+    password: srrkdqwuegzhvtrd
     host: smtp.gmail.com
     port: 587
     properties:
