@@ -29,7 +29,6 @@ public class AuthServiceImpl implements AuthService {
 	private final AuthenticationManager authenticationManager;
 	private final UserService userService;
 
-	@Transactional
 	public JwtResponse createAuthToken(JwtRequest authRequest) {
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
 
@@ -47,7 +46,6 @@ public class AuthServiceImpl implements AuthService {
 		return getJwtResponse(user);
 	}
 
-	@Transactional
 	public JwtResponse refreshAuthToken(String refreshToken) {
 		User user = userService.findByRefreshToken(refreshToken).orElseThrow(() ->
 				new BadRefreshTokenException(HttpStatus.UNAUTHORIZED.value(), INVALID_REFRESH_TOKEN));

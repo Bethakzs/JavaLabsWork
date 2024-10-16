@@ -68,6 +68,7 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
+	@Transactional
 	public Hotel updateHotel(HotelRequestDTO hotelRequestDTO, Long id) {
 		Hotel hotel = findHotelById(id);
 		List<Amenity> amenities = amenityUtil.getAmenities(hotelRequestDTO.getAmenityIds());

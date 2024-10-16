@@ -47,6 +47,7 @@ public class HouseServiceImpl implements HouseService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteHouse(Long id) {
 		House house = findHouseById(id);
 
@@ -58,6 +59,7 @@ public class HouseServiceImpl implements HouseService {
 	}
 
 	@Override
+	@Transactional
 	public House updateHouse(HouseRequestDTO houseRequestDTO, Long id) {
 		House house = findHouseById(id);
 		List<Amenity> amenities = amenityUtil.getAmenities(houseRequestDTO.getAmenityIds());

@@ -103,6 +103,7 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
+	@Transactional
 	public Room updateRoomInHotel(Long id, RoomRequestDTO roomRequestDTO) {
 		Room room = findRoomById(id);
 		List<Amenity> amenities = amenityUtil.getAmenities(roomRequestDTO.getAmenityIds());

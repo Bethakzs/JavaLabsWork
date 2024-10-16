@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
- public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
 	private static final String USER_NOT_FOUND = "User not found";
 	private static final String USER_REGISTRATION_TOPIC = "email-registration-topic";
@@ -73,11 +73,13 @@ import java.util.stream.Collectors;
 	}
 
 	@Override
+	@Transactional
 	public void updateUser(User user) {
 		userRepository.save(user);
 	}
 
 	@Override
+	@Transactional
 	public User updateUser(String email, UserRegistration userDTO) {
 		User user = userRepository.findByEmail(email)
 				.orElseThrow(() -> new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), USER_NOT_FOUND));
@@ -95,6 +97,7 @@ import java.util.stream.Collectors;
 	}
 
 	@Override
+	@Transactional
 	public void deleteUser(String name) {
 		User user = userRepository.findByEmail(name)
 				.orElseThrow(() -> new EmptyArgumentException(HttpStatus.BAD_REQUEST.value(), USER_NOT_FOUND));
@@ -135,6 +138,7 @@ import java.util.stream.Collectors;
 	}
 
 	@Override
+	@Transactional
 	public void withdrawBalance(String email, BigDecimal amount) {
 		User user = userRepository.findByEmail(email)
 				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
@@ -145,6 +149,7 @@ import java.util.stream.Collectors;
 	}
 
 	@Override
+	@Transactional
 	public User depositBalance(String name, BigDecimal amount) {
 		User user = userRepository.findByEmail(name)
 				.orElseThrow(() -> new UserNotFoundException(HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND));
