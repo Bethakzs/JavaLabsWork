@@ -72,7 +72,9 @@ public class HotelServiceImpl implements HotelService {
 	public Hotel updateHotel(HotelRequestDTO hotelRequestDTO, Long id) {
 		Hotel hotel = findHotelById(id);
 		List<Amenity> amenities = amenityUtil.getAmenities(hotelRequestDTO.getAmenityIds());
-		hotel.updateFields(hotelRequestDTO, updaterField, amenities);
+		List<Amenity> mutableAmenities = new ArrayList<>(amenities);
+
+		hotel.updateFields(hotelRequestDTO, updaterField, mutableAmenities);
 		return hotelRepository.save(hotel);
 	}
 }

@@ -4,6 +4,7 @@ import com.example.apigatewayservice.security.JwtTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -31,18 +32,18 @@ public class SecurityConfig {
 		return http
 				.csrf(ServerHttpSecurity.CsrfSpec::disable)
 				.authorizeExchange(exchanges -> exchanges
-						.pathMatchers("/v1/api/auth/**").permitAll()
-						.pathMatchers(
-								"/v1/api/apartment/house/update/**",
-								"/v1/api/apartment/house/delete/**",
-								"/v1/api/apartment/hotel/update/**",
-								"/v1/api/apartment/hotel/delete/**",
-								"/v1/api/apartment/hotel/room/update/**",
-								"/v1/api/apartment/hotel/room/delete/**"
-						).hasAnyRole("EDITOR", "ADMIN")
-						.pathMatchers("/v1/api/users/**").hasAnyRole("USER", "EDITOR", "ADMIN")
-						.pathMatchers("/v1/api/apartment/**").hasAnyRole("USER", "EDITOR", "ADMIN")
-						.pathMatchers("/v1/api/booking/**").hasAnyRole("USER", "EDITOR", "ADMIN")
+						.pathMatchers("/api/v1/auth/**").permitAll()
+//						.pathMatchers(
+//								"/api/v1/apartment/house/**",
+//								"/api/v1/apartment/house/**",
+//								"/api/v1/apartment/hotel/**",
+//								"/api/v1/apartment/hotel/**",
+//								"/api/v1/apartment/room/**",
+//								"/api/v1/apartment/room/**"
+//						).hasAnyRole("EDITOR", "ADMIN") // i need that method delete and update will be for it
+						.pathMatchers("/api/v1/users/**").hasAnyRole("USER", "EDITOR", "ADMIN")
+						.pathMatchers("/api/v1/apartment/**").hasAnyRole("USER", "EDITOR", "ADMIN")
+						.pathMatchers("/api/v1/booking/**").hasAnyRole("USER", "EDITOR", "ADMIN")
 				)
 				.securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
 				.exceptionHandling(e -> e.authenticationEntryPoint((swe, ex) -> Mono.fromRunnable(() -> {

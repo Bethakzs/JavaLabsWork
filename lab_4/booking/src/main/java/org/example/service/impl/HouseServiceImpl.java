@@ -15,6 +15,7 @@ import org.example.util.UpdaterField;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,7 +64,9 @@ public class HouseServiceImpl implements HouseService {
 	public House updateHouse(HouseRequestDTO houseRequestDTO, Long id) {
 		House house = findHouseById(id);
 		List<Amenity> amenities = amenityUtil.getAmenities(houseRequestDTO.getAmenityIds());
-		house.updateFields(houseRequestDTO, updaterField, amenities);
+		List<Amenity> mutableAmenities = new ArrayList<>(amenities);
+
+		house.updateFields(houseRequestDTO, updaterField, mutableAmenities);
 		return houseRepository.save(house);
 	}
 }

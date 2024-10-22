@@ -13,6 +13,8 @@ import org.example.exception.UserAlreadyExistException;
 import org.example.security.JwtTokenProvider;
 import org.example.service.AuthService;
 import org.example.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
 	private static final String INVALID_REFRESH_TOKEN = "Invalid refreshToken";
+	private static final Logger log = LoggerFactory.getLogger(AuthServiceImpl.class);
 
 	private final JwtTokenProvider jwtTokenProvider;
 	private final AuthenticationManager authenticationManager;
@@ -70,6 +73,8 @@ public class AuthServiceImpl implements AuthService {
 		String refreshToken = jwtTokenProvider.generateRefreshToken(userDetails);
 		user.setRefreshToken(refreshToken);
 		userService.updateUser(user);
+
+		log.info("User {} logged in", user.getEmail());
 		return new JwtResponse(accessToken, refreshToken, user.getRoles());
 	}
 }

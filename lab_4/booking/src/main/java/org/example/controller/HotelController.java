@@ -13,20 +13,20 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("v1/api/apartment/hotel")
+@RequestMapping("api/v1/apartment/hotel")
 @Slf4j
 public class HotelController {
 
 	private final HotelService hotelService;
 
-	@GetMapping("/get/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Hotel> getHotel(@PathVariable Long id) {
 		Hotel hotel = hotelService.findHotelById(id);
 		logHotelInfo(hotel);
 		return ResponseEntity.ok(hotel);
 	}
 
-	@GetMapping("/get/all")
+	@GetMapping()
 	public ResponseEntity<List<Hotel>> getAllHotels() {
 		List<Hotel> hotels = hotelService.getAllHotels();
 		if (hotels.isEmpty()) {
@@ -36,21 +36,21 @@ public class HotelController {
 		return ResponseEntity.ok(hotels);
 	}
 
-	@PostMapping("/create")
+	@PostMapping()
 	public ResponseEntity<Hotel> createHotel(@Valid @RequestBody HotelRequestDTO hotelRequestDTO) {
 		Hotel hotel = hotelService.createHotel(hotelRequestDTO);
 		logHotelInfo(hotel);
 		return ResponseEntity.ok(hotel);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteHotel(@PathVariable Long id) {
 		hotelService.deleteHotel(id);
 		log.info("House with ID {} was deleted.", id);
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping("/update/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Hotel> updateHotel(
 			@Valid @RequestBody HotelRequestDTO hotelRequestDTO, @PathVariable Long id) {
 		Hotel hotel = hotelService.updateHotel(hotelRequestDTO, id);

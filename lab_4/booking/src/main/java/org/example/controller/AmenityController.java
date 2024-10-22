@@ -13,13 +13,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("v1/api/apartment/amenity")
+@RequestMapping("api/v1/apartment/amenity")
 @Slf4j
 public class AmenityController {
 
 	private final AmenityService amenityService;
 
-	@GetMapping("/all")
+	@GetMapping()
 	public ResponseEntity<List<Amenity>> getAllAmenities() {
 		List<Amenity> amenities = amenityService.getAllAmenities();
 		if (amenities.isEmpty()) {

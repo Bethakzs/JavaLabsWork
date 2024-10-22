@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/api/booking")
+@RequestMapping("api/v1/booking")
 @RequiredArgsConstructor
 public class BookingController {
 
@@ -24,7 +24,7 @@ public class BookingController {
 	private final ApartmentService apartmentService;
 	private final JwtTokenProvider jwtTokenProvider;
 
-	@PostMapping("/book")
+	@PostMapping()
 	public ResponseEntity<Booking> bookApartment(@Valid @RequestBody BookingRequestDTO bookingRequest,
 												 @RequestHeader("Authorization") String authHeader) {
 		Booking booking = bookingServiceImpl.bookApartment(
@@ -35,7 +35,7 @@ public class BookingController {
 		return ResponseEntity.ok(booking);
 	}
 
-	@DeleteMapping("/delete/{bookingId}")
+	@DeleteMapping("/{bookingId}")
 	public ResponseEntity<Void> unBookApartment(@PathVariable Long bookingId) {
 		bookingServiceImpl.unBookApartment(bookingId);
 		return ResponseEntity.noContent().build();
