@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: roman_levkiv
+      changes:
+        - sqlFile:
+            path: classpath:db/migration/changelog/V1__create_user_table.sql
+            relativeToChangelogFile: false
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 2
+      author: roman_levkiv
+      changes:
+        - sqlFile:
+            path: classpath:db/migration/changelog/V2__create_user_roles_table.sql
+            relativeToChangelogFile: false
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 3
+      author: roman_levkiv
+      changes:
+        - sqlFile:
+            path: classpath:db/migration/changelog/V3__create_index.sql
+            relativeToChangelogFile: false
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: 4
+      author: roman_levkiv
+      changes:
+        - sqlFile:
+            path: classpath:db/migration/changelog/V4__insert_test_data.sql
+            relativeToChangelogFile: false
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true

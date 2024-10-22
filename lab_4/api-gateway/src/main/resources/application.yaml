@@ -1,0 +1,34 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+jwt:
+  secret: ${JWT_SECRET}
+  accessToken:
+    lifetime: ${JWT_ACCESS_TOKEN_LIFETIME:1h}
+  refreshToken:
+    lifetime: ${JWT_REFRESH_TOKEN_LIFETIME:1d}
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    gateway:
+      routes:
+        - id: auth_route
+          uri: ${AUTH_URI:http://localhost:8081}
+          predicates:
+            - Path=${AUTH_PATH:/api/v1/auth/**}
+        - id: user_route
+          uri: ${USER_URI:http://localhost:8081}
+          predicates:
+            - Path=${USER_PATH:/api/v1/users/**}
+        - id: booking_route
+          uri: ${BOOKING_URI:http://localhost:8082}
+          predicates:
+            - Path=${BOOKING_PATH:/api/v1/booking/**}
+        - id: apartment_route
+          uri: ${APARTMENT_URI:http://localhost:8082}
+          predicates:
+            - Path=${APARTMENT_PATH:/api/v1/apartment/**}
