@@ -1,4 +1,4 @@
-package org.example.lab_2.task3;
+package org.example.task3;
 
 import java.util.Scanner;
 

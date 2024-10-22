@@ -1,6 +1,6 @@
 package org.example.task7;
 
-import org.example.lab_1.task6.CurrencyConverter;
+import org.example.task6.CurrencyConverter;
 
 public class BankTransaction {
     private static final double SAME_BANK_INTERNAL_TRANSFER_FEE = 0.0;
