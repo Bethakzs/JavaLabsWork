@@ -33,14 +33,12 @@ public class SecurityConfig {
 				.csrf(ServerHttpSecurity.CsrfSpec::disable)
 				.authorizeExchange(exchanges -> exchanges
 						.pathMatchers("/api/v1/auth/**").permitAll()
-//						.pathMatchers(
-//								"/api/v1/apartment/house/**",
-//								"/api/v1/apartment/house/**",
-//								"/api/v1/apartment/hotel/**",
-//								"/api/v1/apartment/hotel/**",
-//								"/api/v1/apartment/room/**",
-//								"/api/v1/apartment/room/**"
-//						).hasAnyRole("EDITOR", "ADMIN") // i need that method delete and update will be for it
+						.pathMatchers(HttpMethod.PUT, "/api/v1/apartment/house/**").hasAnyRole("EDITOR", "ADMIN")
+						.pathMatchers(HttpMethod.DELETE, "/api/v1/apartment/house/**").hasAnyRole("EDITOR", "ADMIN")
+						.pathMatchers(HttpMethod.PUT, "/api/v1/apartment/hotel/**").hasAnyRole("EDITOR", "ADMIN")
+						.pathMatchers(HttpMethod.DELETE, "/api/v1/apartment/hotel/**").hasAnyRole("EDITOR", "ADMIN")
+						.pathMatchers(HttpMethod.PUT, "/api/v1/apartment/room/**").hasAnyRole("EDITOR", "ADMIN")
+						.pathMatchers(HttpMethod.DELETE, "/api/v1/apartment/room/**").hasAnyRole("EDITOR", "ADMIN")
 						.pathMatchers("/api/v1/users/**").hasAnyRole("USER", "EDITOR", "ADMIN")
 						.pathMatchers("/api/v1/apartment/**").hasAnyRole("USER", "EDITOR", "ADMIN")
 						.pathMatchers("/api/v1/booking/**").hasAnyRole("USER", "EDITOR", "ADMIN")
