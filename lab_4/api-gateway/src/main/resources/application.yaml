@@ -19,16 +19,16 @@ spring:
         - id: auth_route
           uri: ${AUTH_URI:http://localhost:8081}
           predicates:
-            - Path=${AUTH_PATH:/v1/api/auth/**}
+            - Path=${AUTH_PATH:/api/v1/auth/**}
         - id: user_route
           uri: ${USER_URI:http://localhost:8081}
           predicates:
-            - Path=${USER_PATH:/v1/api/users/**}
+            - Path=${USER_PATH:/api/v1/users/**}
         - id: booking_route
           uri: ${BOOKING_URI:http://localhost:8082}
           predicates:
-            - Path=${BOOKING_PATH:/v1/api/booking/**}
+            - Path=${BOOKING_PATH:/api/v1/booking/**}
         - id: apartment_route
           uri: ${APARTMENT_URI:http://localhost:8082}
           predicates:
-            - Path=${APARTMENT_PATH:/v1/api/apartment/**}
+            - Path=${APARTMENT_PATH:/api/v1/apartment/**}

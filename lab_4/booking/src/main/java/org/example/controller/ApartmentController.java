@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/api/apartment")
+@RequestMapping("/api/v1/apartment")
 @RequiredArgsConstructor
 public class ApartmentController {
 
 	private final ApartmentService apartmentService;
 
-	@GetMapping("/search")
+	@GetMapping()
 	public ResponseEntity<List<Apartment>> searchApartments(
 			@RequestParam(required = false) AmenityType amenityType,
 			@RequestParam(required = false) Type type) {

@@ -15,13 +15,13 @@ import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("v1/api/users")
+@RequestMapping("api/v1/users")
 @Slf4j
 public class UserController {
 
 	private final UserService userService;
 
-	@GetMapping("/get")
+	@GetMapping()
 	public ResponseEntity<UserDTO> getUser(Principal principal) {
 		User user = userService.findByEmail(principal.getName());
 		UserDTO userDTO = mapUserToUserDTO(user);
@@ -29,14 +29,14 @@ public class UserController {
 		return ResponseEntity.ok(userDTO);
 	}
 
-	@DeleteMapping("/delete")
+	@DeleteMapping()
 	public ResponseEntity<Void> deleteUser(Principal principal) {
 		userService.deleteUser(principal.getName());
 		log.info("User with email {} was deleted.", principal.getName());
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping("/update")
+	@PutMapping()
 	public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody UserRegistration userRegistration, Principal principal) {
 		User user = userService.updateUser(principal.getName(), userRegistration);
 		UserDTO userDTO = mapUserToUserDTO(user);

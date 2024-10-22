@@ -1,8 +1,10 @@
 package org.example.entity.amenity;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
+@RequiredArgsConstructor
 public enum AmenityType {
 	WI_FI(5),
 	KITCHEN(20),
@@ -17,9 +19,4 @@ public enum AmenityType {
 	DOG_HOUSE(3);
 
 	private final int value;
-
-	AmenityType(int value) {
-		this.value = value;
-	}
-
 }

@@ -51,7 +51,7 @@ public abstract class ApartmentCapacity extends Apartment {
 		super.updateFields(requestDTO, updaterField, amenities);
 		// Child class methods named for parent class methods should be overridden.
 		// That it will be overridden we need to use the same method signature.
-		if (requestDTO instanceof UpdatableCapacityDTO capacityDTO) {
+		if (requestDTO instanceof UpdatableCapacityDTO capacityDTO) { // Pattern matching for instanceof
 			updaterField.updateField(capacityDTO.getMaxSpace(), this::setMaxSpace);
 		}
 		calculateSpaceFromAmenities(amenities);

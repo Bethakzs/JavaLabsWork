@@ -35,6 +35,7 @@ public class BookingServiceImpl implements BookingService {
 	private final KafkaTemplate<String, String> kafkaTemplate;
 
 	@Override
+	@Transactional
 	public Booking bookApartment(String email, Long apartmentId, LocalDate startDate, LocalDate endDate) {
 		UserDTO user = findOrRetrieveUserByEmail(email);
 		Apartment apartment = apartmentService.findApartmentById(apartmentId);
@@ -66,7 +67,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	private UserDTO findOrRetrieveUserByEmail(String email) {
-		UserDTO kafkaUser = getUserFromKafka(email);
+		UserDTO kafkaUser = kafkaConsumerService.getUserFromKafka(email);
 		if (kafkaUser != null) {
 			log.info("User with email {}", kafkaUser.getEmail());
 			return kafkaUser;
@@ -77,10 +78,6 @@ public class BookingServiceImpl implements BookingService {
 
 	private boolean isApartmentAlreadyBookedInThisRange(Apartment apartment, LocalDate startDate, LocalDate endDate) {
 		return bookingRepository.existsByApartmentAndStartDateBetween(apartment, startDate, endDate);
-	}
-
-	private UserDTO getUserFromKafka(String email) {
-		return kafkaConsumerService.getUserFromKafka(email);
 	}
 
 	@Override
@@ -106,6 +103,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
+	@Transactional
 	public void unBookApartment(Long bookingId) {
 		Booking booking = bookingRepository.findById(bookingId)
 				.orElseThrow(() -> new ApartmentNotFoundException(HttpStatus.NOT_FOUND.value(), "Booking with id " + bookingId + " not found"));

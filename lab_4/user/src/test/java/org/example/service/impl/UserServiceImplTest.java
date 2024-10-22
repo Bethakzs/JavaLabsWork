@@ -372,6 +372,69 @@ class UserServiceImplTest {
 		verify(mockSetter, never()).accept(any(String.class));
 	}
 
+
+	@Test
+	void givenValidEmailAndAmount_withdrawBalance_shouldUpdateUserBalance() {
+		String email = "test@example.com";
+		BigDecimal initialBalance = new BigDecimal("100.00");
+		BigDecimal amountToWithdraw = new BigDecimal("30.00");
+		BigDecimal expectedBalance = new BigDecimal("70.00");
+
+		User user = new User();
+		user.setEmail(email);
+		user.setBalance(initialBalance);
+
+		when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
+
+		userService.withdrawBalance(email, amountToWithdraw);
+
+		assertThat(user.getBalance()).isEqualTo(expectedBalance);
+		verify(userRepository).save(user);
+	}
+
+	@Test
+	void givenInvalidEmail_withdrawBalance_shouldThrowUserNotFoundException() {
+		String email = "invalid@example.com";
+		BigDecimal amountToWithdraw = new BigDecimal("30.00");
+
+		when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
+
+		assertThrows(UserNotFoundException.class, () -> userService.withdrawBalance(email, amountToWithdraw));
+		verify(userRepository, never()).save(any(User.class));
+	}
+
+
+	@Test
+	void givenValidEmailAndAmount_depositBalance_shouldUpdateUserBalance() {
+		String email = "test@example.com";
+		BigDecimal initialBalance = new BigDecimal("100.00");
+		BigDecimal amountToDeposit = new BigDecimal("50.00");
+		BigDecimal expectedBalance = new BigDecimal("150.00");
+
+		User user = new User();
+		user.setEmail(email);
+		user.setBalance(initialBalance);
+
+		when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
+		when(userRepository.save(user)).thenReturn(user);
+
+		User result = userService.depositBalance(email, amountToDeposit);
+
+		assertThat(result.getBalance()).isEqualTo(expectedBalance);
+		verify(userRepository).save(user);
+	}
+
+	@Test
+	void givenInvalidEmail_depositBalance_shouldThrowUserNotFoundException() {
+		String email = "invalid@example.com";
+		BigDecimal amountToDeposit = new BigDecimal("50.00");
+
+		when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
+
+		assertThrows(UserNotFoundException.class, () -> userService.depositBalance(email, amountToDeposit));
+		verify(userRepository, never()).save(any(User.class));
+	}
+
 	private UserRegistration buildUserRegistration() {
 		return UserRegistration.builder()
 				.firstName("John")

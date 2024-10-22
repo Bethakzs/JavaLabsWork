@@ -17,6 +17,7 @@ import org.example.util.UpdaterField;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -103,10 +104,13 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
+	@Transactional
 	public Room updateRoomInHotel(Long id, RoomRequestDTO roomRequestDTO) {
 		Room room = findRoomById(id);
 		List<Amenity> amenities = amenityUtil.getAmenities(roomRequestDTO.getAmenityIds());
-		room.updateFields(roomRequestDTO, updaterField, amenities);
+		List<Amenity> mutableAmenities = new ArrayList<>(amenities);
+
+		room.updateFields(roomRequestDTO, updaterField, mutableAmenities);
 		return roomRepository.save(room);
 	}
 }

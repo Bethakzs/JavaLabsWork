@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,20 +14,20 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("v1/api/apartment/house")
+@RequestMapping("api/v1/apartment/house")
 @Slf4j
 public class HouseController {
 
 	private final HouseService houseService;
 
-	@GetMapping("/get/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<House> getHouse(@PathVariable Long id) {
 		House house = houseService.findHouseById(id);
 		logHouseInfo(house);
 		return ResponseEntity.ok(house);
 	}
 
-	@GetMapping("/get/all")
+	@GetMapping()
 	public ResponseEntity<List<House>> getAllHouses() {
 		List<House> houses = houseService.getAllHouse();
 		if (houses.isEmpty()) {
@@ -36,21 +37,22 @@ public class HouseController {
 		return ResponseEntity.ok(houses);
 	}
 
-	@PostMapping("/create")
+	@PostMapping()
 	public ResponseEntity<House> createHouse(@Valid @RequestBody HouseRequestDTO houseRequestDTO) {
 		House house = houseService.createHouse(houseRequestDTO);
 		logHouseInfo(house);
 		return ResponseEntity.ok(house);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
+	@RolesAllowed({"ROLE_EDITOR", "EDITOR"})
 	public ResponseEntity<Void> deleteHouse(@PathVariable Long id) {
 		houseService.deleteHouse(id);
 		log.info("House with ID {} was deleted.", id);
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping("/update/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<House> updateHouse(
 			@Valid @RequestBody HouseRequestDTO houseRequestDTO, @PathVariable Long id) {
 		House house = houseService.updateHouse(houseRequestDTO, id);

@@ -33,8 +33,7 @@ public abstract class Apartment {
 	@Column(nullable = false)
 	private Type type;
 
-	@ManyToMany(fetch = FetchType.EAGER) // EAGER fetch type is used to load
-	// all amenities when loading an apartment and avoid N + 1 problem
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "apartment_amenities",
 			joinColumns = @JoinColumn(name = "apartment_id"),
