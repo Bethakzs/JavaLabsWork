@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9e41681f-585d-43c1-8bf3-ed58b870febc",
+		"_postman_id": "45c1d9d0-2bb0-4b47-8360-00446ee2d106",
 		"name": "University",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29847127",
-		"_collection_link": "https://cloudy-station-167426.postman.co/workspace/University~1e730e02-772d-4546-9937-1f7eb57580e6/collection/29847127-9e41681f-585d-43c1-8bf3-ed58b870febc?action=share&source=collection_link&creator=29847127"
+		"_exporter_id": "29847127"
 	},
 	"item": [
 		{
@@ -21,7 +20,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA3NzY1LCJpYXQiOjE3Mjk2MDQxNjV9.kImNhXwa3fgqTN8tADmOaf0xsuHTk6rGBC79zHupv_I",
 											"type": "string"
 										}
 									]
@@ -29,15 +28,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/apartment/house/get/1",
+									"raw": "{{base_url}}/apartment/house/3",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
 										"house",
-										"get",
-										"1"
+										"3"
 									]
 								}
 							},
@@ -51,7 +49,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjI5NDI1LCJpYXQiOjE3Mjk2MjU4MjV9.0q8DCRWISgaB1Kg_PMqVh_cM7e49a-natkKTGcK2LUw",
 											"type": "string"
 										}
 									]
@@ -59,15 +57,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/apartment/house/get/all",
+									"raw": "{{base_url}}/apartment/house",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
-										"house",
-										"get",
-										"all"
+										"house"
 									]
 								}
 							},
@@ -81,7 +77,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA3NzY1LCJpYXQiOjE3Mjk2MDQxNjV9.kImNhXwa3fgqTN8tADmOaf0xsuHTk6rGBC79zHupv_I",
 											"type": "string"
 										}
 									]
@@ -98,14 +94,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/apartment/house/create",
+									"raw": "{{base_url}}/apartment/house",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
-										"house",
-										"create"
+										"house"
 									]
 								}
 							},
@@ -119,7 +114,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI4ODQ2MDE4LCJpYXQiOjE3Mjg4NDI0MTh9.XLwQK93F25uo_-HFYlyhMT8vmvBycrXkOhDDX3IW2hI",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI5NjI5NDY1LCJpYXQiOjE3Mjk2MjU4NjV9.IUqb_OwdDbdvuuggxvBeORfo8EBmy-fmsID3sbkLm78",
 											"type": "string"
 										}
 									]
@@ -127,15 +122,14 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/apartment/house/delete/11",
+									"raw": "{{base_url}}/apartment/house/4",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
 										"house",
-										"delete",
-										"11"
+										"4"
 									]
 								}
 							},
@@ -149,7 +143,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA3NzY1LCJpYXQiOjE3Mjk2MDQxNjV9.kImNhXwa3fgqTN8tADmOaf0xsuHTk6rGBC79zHupv_I",
 											"type": "string"
 										}
 									]
@@ -166,15 +160,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/apartment/house/update/9",
+									"raw": "{{base_url}}/apartment/house/2",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
 										"house",
-										"update",
-										"9"
+										"2"
 									]
 								}
 							},
@@ -186,215 +179,6 @@
 					"name": "Hotel",
 					"item": [
 						{
-							"name": "Room",
-							"item": [
-								{
-									"name": "Get room by id",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/apartment/hotel/room/get/14",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"apartment",
-												"hotel",
-												"room",
-												"get",
-												"14"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get all rooms by hotel id",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/apartment/hotel/room/get/all/8",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"apartment",
-												"hotel",
-												"room",
-												"get",
-												"all",
-												"8"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get all rooms",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/apartment/hotel/room/get/all",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"apartment",
-												"hotel",
-												"room",
-												"get",
-												"all"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Create room",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"hotelId\": 13,\r\n  \"name\": \"Sunny Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"ECONOMIC\",\r\n  \"amenityIds\": [8, 9],\r\n  \"maxSpace\": 8\r\n}\r\n",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_url}}/apartment/hotel/room/create",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"apartment",
-												"hotel",
-												"room",
-												"create"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Delete room by id",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
-													"type": "string"
-												}
-											]
-										},
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/apartment/hotel/room/delete/5",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"apartment",
-												"hotel",
-												"room",
-												"delete",
-												"5"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update room by id",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4NjM2NDk1LCJpYXQiOjE3Mjg2MzI4OTV9.dGNkuKTi2ODrYqiKWGqOXGXfGVIMFVdo8wtgXeZfcps",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"hotelId\": 13,\r\n  \"name\": \"Mooned Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"STANDARD\",\r\n  \"amenityIds\": [1, 2, 8, 10],\r\n  \"maxSpace\": 6\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{base_url}}/apartment/hotel/room/update/14",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"apartment",
-												"hotel",
-												"room",
-												"update",
-												"14"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
 							"name": "Get hotel",
 							"request": {
 								"auth": {
@@ -402,7 +186,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
 											"type": "string"
 										}
 									]
@@ -410,14 +194,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/apartment/hotel/get/8",
+									"raw": "{{base_url}}/apartment/hotel/8",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
 										"hotel",
-										"get",
 										"8"
 									]
 								}
@@ -432,7 +215,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjI5NDI1LCJpYXQiOjE3Mjk2MjU4MjV9.0q8DCRWISgaB1Kg_PMqVh_cM7e49a-natkKTGcK2LUw",
 											"type": "string"
 										}
 									]
@@ -440,15 +223,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/apartment/hotel/get/all",
+									"raw": "{{base_url}}/apartment/hotel",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
-										"hotel",
-										"get",
-										"all"
+										"hotel"
 									]
 								}
 							},
@@ -462,7 +243,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
 											"type": "string"
 										}
 									]
@@ -479,14 +260,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/apartment/hotel/create",
+									"raw": "{{base_url}}/apartment/hotel",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
-										"hotel",
-										"create"
+										"hotel"
 									]
 								}
 							},
@@ -500,7 +280,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI5NjI5NDY1LCJpYXQiOjE3Mjk2MjU4NjV9.IUqb_OwdDbdvuuggxvBeORfo8EBmy-fmsID3sbkLm78",
 											"type": "string"
 										}
 									]
@@ -508,15 +288,14 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/apartment/hotel/delete/10",
+									"raw": "{{base_url}}/apartment/hotel/8",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
 										"hotel",
-										"delete",
-										"10"
+										"8"
 									]
 								}
 							},
@@ -530,7 +309,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
 											"type": "string"
 										}
 									]
@@ -547,15 +326,210 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/apartment/hotel/update/10",
+									"raw": "{{base_url}}/apartment/hotel/11",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"apartment",
 										"hotel",
-										"update",
-										"10"
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Room",
+					"item": [
+						{
+							"name": "Get room by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjI4NjIyLCJpYXQiOjE3Mjk2MjUwMjJ9.ZR4UwS7ShLtpjtzrgcYd_lkkjOCyZtgjOlvrYLxi50g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/room/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"room",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all rooms by hotel id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/room/hotel/8",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"room",
+										"hotel",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all rooms",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/room",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"room"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"hotelId\": 8,\r\n  \"name\": \"Sunny Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"ECONOMIC\",\r\n  \"amenityIds\": [8, 9],\r\n  \"maxSpace\": 8\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/apartment/room",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"room"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete room by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI5NjI5NDY1LCJpYXQiOjE3Mjk2MjU4NjV9.IUqb_OwdDbdvuuggxvBeORfo8EBmy-fmsID3sbkLm78",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/apartment/room/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"room",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update room by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjI4NjIyLCJpYXQiOjE3Mjk2MjUwMjJ9.ZR4UwS7ShLtpjtzrgcYd_lkkjOCyZtgjOlvrYLxi50g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"hotelId\": 13,\r\n  \"name\": \"Mooned Villa\",\r\n  \"price\": 150.0,\r\n  \"type\": \"STANDARD\",\r\n  \"amenityIds\": [1, 2, 8, 10],\r\n  \"maxSpace\": 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/apartment/room/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"apartment",
+										"room",
+										"6"
 									]
 								}
 							},
@@ -571,7 +545,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA3NzY1LCJpYXQiOjE3Mjk2MDQxNjV9.kImNhXwa3fgqTN8tADmOaf0xsuHTk6rGBC79zHupv_I",
 									"type": "string"
 								}
 							]
@@ -579,14 +553,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/apartment/amenity/all",
+							"raw": "{{base_url}}/apartment/amenity",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"apartment",
-								"amenity",
-								"all"
+								"amenity"
 							]
 						}
 					},
@@ -867,13 +840,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/booking/book",
+							"raw": "{{base_url}}/booking",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"booking",
-								"book"
+								"booking"
 							]
 						}
 					},
@@ -904,13 +876,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/booking/delete/2",
+							"raw": "{{base_url}}/booking/2",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"booking",
-								"delete",
 								"2"
 							]
 						}
@@ -1070,7 +1041,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJleHAiOjE3MjgzMTAyMjMsImlhdCI6MTcyODMwNjYyM30.oY_XjujjeSPTgvAJd54Sn4nnDZOKE5YKibuvr6nuApg",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA3NzY1LCJpYXQiOjE3Mjk2MDQxNjV9.kImNhXwa3fgqTN8tADmOaf0xsuHTk6rGBC79zHupv_I",
 									"type": "string"
 								}
 							]
@@ -1078,13 +1049,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/users/get",
+							"raw": "{{base_url}}/users",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"users",
-								"get"
+								"users"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -1109,6 +1079,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huLmRvZWhoOUBleGFtcGxlLmNvbSIsInJvbGVzIjpbIlJPTEVfRURJVE9SIl0sImV4cCI6MTcyOTU4NjQ0NiwiaWF0IjoxNzI5NTgyODQ2fQ.aFgq3YNi2HzSxeVYhCb7BmgBULt-hr-M0_DqAJLbawA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -1118,13 +1098,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/users/delete",
+							"raw": "{{base_url}}/users",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"users",
-								"delete"
+								"users"
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -1154,7 +1133,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI4ODI1NjU3LCJpYXQiOjE3Mjg4MjIwNTd9.emT8Zl5pZPHovzQP7mQ4hayfdF0Cx6nK0zhpT54bnX8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VpLmR1bm9AZ21haWwuY29tIiwicm9sZXMiOlsiUk9MRV9FRElUT1IiXSwiZXhwIjoxNzI5NTg2MzA3LCJpYXQiOjE3Mjk1ODI3MDd9.XguVJiXt7zkTDOZvss6cq5v8sDl8HCb_-ZPKxneRcVs",
 									"type": "string"
 								}
 							]
@@ -1171,13 +1150,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/users/update",
+							"raw": "{{base_url}}/users",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"users",
-								"update"
+								"users"
 							]
 						},
 						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
@@ -1206,7 +1184,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHNkYUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI4OTM1OTU2LCJpYXQiOjE3Mjg5MzIzNTZ9._98MvtjcE4gWj-x-DxGMm2QF9nPkudzK4rh0z5ozq2c",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3UuZHVub0BnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzI5NjA5MTY0LCJpYXQiOjE3Mjk2MDU1NjR9.N3ygwtK9EoOy3ueAj2h6IX1NWAZcAbcP3xdazNQnH00",
 									"type": "string"
 								}
 							]
