@@ -17,4 +17,6 @@ public interface ApartmentService {
 	String getStatistics(Long id);
 
 	Apartment findApartmentById(Long apartmentId);
+
+	BigDecimal calculateTotalCostOfApartment(LocalDate startDate, LocalDate endDate, BigDecimal pricePerDay);
 }
